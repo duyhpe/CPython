@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Packaging and Distribution &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="distutils — Building and installing Python modules" href="distutils.html" />
+    <link rel="prev" title="tracemalloc — Trace memory allocations" href="tracemalloc.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/distribution.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Python Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Built-in Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdtypes.html">Built-in Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Built-in Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text Processing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">Binary Data Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric.html">Numeric and Mathematical Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">File and Directory Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archiving.html">Data Compression and Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileformats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">Cryptographic Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allos.html">Generic Operating System Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concurrency.html">Concurrent Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">Networking and Interprocess Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netdata.html">Internet Data Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markup.html">Structured Markup Processing Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internet.html">Internet Protocols and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mm.html">Multimedia Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Program Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tk.html">Graphical User Interfaces with Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging and Profiling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Software Packaging and Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="distutils.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils</span></code> — Building and installing Python modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensurepip.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code> — Bootstrapping the <code class="docutils literal notranslate"><span class="pre">pip</span></code> installer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="venv.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code> — Creation of virtual environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zipapp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipapp</span></code> — Manage executable Python zip archives</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python Runtime Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custominterp.html">Custom Python Interpreters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Importing Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Python Language Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">MS Windows Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix.html">Unix Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="superseded.html">Superseded Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undoc.html">Undocumented Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_warnings.html">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">The Python Standard Library</a> &raquo;</li>
+      <li>Software Packaging and Distribution</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/distribution.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="software-packaging-and-distribution">
+<h1>Software Packaging and Distribution<a class="headerlink" href="#software-packaging-and-distribution" title="Permalink to this headline"></a></h1>
+<p>These libraries help you with publishing and installing Python software.
+While these modules are designed to work in conjunction with the
+<a class="reference external" href="https://pypi.org">Python Package Index</a>, they can also be used
+with a local index server, or without any index server at all.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="distutils.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils</span></code> — Building and installing Python modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensurepip.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code> — Bootstrapping the <code class="docutils literal notranslate"><span class="pre">pip</span></code> installer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ensurepip.html#command-line-interface">Command line interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensurepip.html#module-api">Module API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="venv.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code> — Creation of virtual environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#creating-virtual-environments">Creating virtual environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#an-example-of-extending-envbuilder">An example of extending <code class="docutils literal notranslate"><span class="pre">EnvBuilder</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="zipapp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipapp</span></code> — Manage executable Python zip archives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="zipapp.html#basic-example">Basic Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zipapp.html#command-line-interface">Command-Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zipapp.html#python-api">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zipapp.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zipapp.html#specifying-the-interpreter">Specifying the Interpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zipapp.html#creating-standalone-applications-with-zipapp">Creating Standalone Applications with zipapp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zipapp.html#making-a-windows-executable">Making a Windows executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zipapp.html#caveats">Caveats</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="zipapp.html#the-python-zip-application-archive-format">The Python Zip Application Archive Format</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tracemalloc.html" class="btn btn-neutral float-left" title="tracemalloc — Trace memory allocations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="distutils.html" class="btn btn-neutral float-right" title="distutils — Building and installing Python modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>telnetlib — Telnet client &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="uuid — UUID objects according to RFC 4122" href="uuid.html" />
+    <link rel="prev" title="smtpd — SMTP Server" href="smtpd.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/telnetlib.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Python Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Built-in Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdtypes.html">Built-in Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Built-in Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text Processing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">Binary Data Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric.html">Numeric and Mathematical Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">File and Directory Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archiving.html">Data Compression and Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileformats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">Cryptographic Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allos.html">Generic Operating System Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concurrency.html">Concurrent Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">Networking and Interprocess Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netdata.html">Internet Data Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markup.html">Structured Markup Processing Tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="internet.html">Internet Protocols and Support</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="webbrowser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">webbrowser</span></code> — Convenient web-browser controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgi.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgi</span></code> — Common Gateway Interface support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgitb.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgitb</span></code> — Traceback manager for CGI scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wsgiref.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wsgiref</span></code> — WSGI Utilities and Reference Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib</span></code> — URL handling modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.request.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.request</span></code> — Extensible library for opening URLs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.request.html#module-urllib.response"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.response</span></code> — Response classes used by urllib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.parse.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.parse</span></code> — Parse URLs into components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.error</span></code> — Exception classes raised by urllib.request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.robotparser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.robotparser</span></code> —  Parser for robots.txt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http</span></code> — HTTP modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http.client.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.client</span></code> — HTTP protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ftplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ftplib</span></code> — FTP protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="poplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">poplib</span></code> — POP3 protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imaplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imaplib</span></code> — IMAP4 protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nntplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nntplib</span></code> — NNTP protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smtplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtplib</span></code> — SMTP protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smtpd.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtpd</span></code> — SMTP Server</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code> — Telnet client</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#telnet-objects">Telnet Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#telnet-example">Telnet Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="uuid.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uuid</span></code> — UUID objects according to <strong>RFC 4122</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="socketserver.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">socketserver</span></code> — A framework for network servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http.server.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.server</span></code> — HTTP servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http.cookies.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code> — HTTP state management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http.cookiejar.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code> — Cookie handling for HTTP clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xmlrpc.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc</span></code> — XMLRPC server and client modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xmlrpc.client.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc.client</span></code> — XML-RPC client access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xmlrpc.server.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc.server</span></code> — Basic XML-RPC servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipaddress.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code> — IPv4/IPv6 manipulation library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mm.html">Multimedia Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Program Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tk.html">Graphical User Interfaces with Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging and Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">Software Packaging and Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python Runtime Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custominterp.html">Custom Python Interpreters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Importing Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Python Language Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">MS Windows Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix.html">Unix Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="superseded.html">Superseded Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undoc.html">Undocumented Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_warnings.html">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">The Python Standard Library</a> &raquo;</li>
+          <li><a href="internet.html">Internet Protocols and Support</a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code> — Telnet client</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/telnetlib.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-telnetlib">
+<span id="telnetlib-telnet-client"></span><h1><a class="reference internal" href="#module-telnetlib" title="telnetlib: Telnet client class."><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code></a> — Telnet client<a class="headerlink" href="#module-telnetlib" title="Permalink to this headline"></a></h1>
+<p><strong>Source code:</strong> <a href="#id1"><span class="problematic" id="id2">:source:`Lib/telnetlib.py`</span></a></p>
+<hr class="docutils" id="index-0" />
+<p>The <a class="reference internal" href="#module-telnetlib" title="telnetlib: Telnet client class."><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code></a> module provides a <a class="reference internal" href="#telnetlib.Telnet" title="telnetlib.Telnet"><code class="xref py py-class docutils literal notranslate"><span class="pre">Telnet</span></code></a> class that implements the
+Telnet protocol.  See <span class="target" id="index-1"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc854.html"><strong>RFC 854</strong></a> for details about the protocol. In addition, it
+provides symbolic constants for the protocol characters (see below), and for the
+telnet options. The symbolic names of the telnet options follow the definitions
+in <code class="docutils literal notranslate"><span class="pre">arpa/telnet.h</span></code>, with the leading <code class="docutils literal notranslate"><span class="pre">TELOPT_</span></code> removed. For symbolic names
+of options which are traditionally not included in <code class="docutils literal notranslate"><span class="pre">arpa/telnet.h</span></code>, see the
+module source itself.</p>
+<p>The symbolic constants for the telnet commands are: IAC, DONT, DO, WONT, WILL,
+SE (Subnegotiation End), NOP (No Operation), DM (Data Mark), BRK (Break), IP
+(Interrupt process), AO (Abort output), AYT (Are You There), EC (Erase
+Character), EL (Erase Line), GA (Go Ahead), SB (Subnegotiation Begin).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="telnetlib.Telnet">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">telnetlib.</span></span><span class="sig-name descname"><span class="pre">Telnet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">host=None</span></em>, <em class="sig-param"><span class="pre">port=0</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">timeout</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet" title="Permalink to this definition"></a></dt>
+<dd><p><a class="reference internal" href="#telnetlib.Telnet" title="telnetlib.Telnet"><code class="xref py py-class docutils literal notranslate"><span class="pre">Telnet</span></code></a> represents a connection to a Telnet server. The instance is
+initially not connected by default; the <a class="reference internal" href="#telnetlib.Telnet.open" title="telnetlib.Telnet.open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">open()</span></code></a> method must be used to
+establish a connection.  Alternatively, the host name and optional port
+number can be passed to the constructor too, in which case the connection to
+the server will be established before the constructor returns.  The optional
+<em>timeout</em> parameter specifies a timeout in seconds for blocking operations
+like the connection attempt (if not specified, the global default timeout
+setting will be used).</p>
+<p>Do not reopen an already connected instance.</p>
+<p>This class has many <code class="xref py py-meth docutils literal notranslate"><span class="pre">read_*()</span></code> methods.  Note that some of them  raise
+<a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a> when the end of the connection is read, because they can return
+an empty string for other reasons.  See the individual descriptions below.</p>
+<p>A <a class="reference internal" href="#telnetlib.Telnet" title="telnetlib.Telnet"><code class="xref py py-class docutils literal notranslate"><span class="pre">Telnet</span></code></a> object is a context manager and can be used in a
+<a class="reference internal" href="../reference/compound_stmts.html#with"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a> statement.  When the <code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code> block ends, the
+<a class="reference internal" href="#telnetlib.Telnet.close" title="telnetlib.Telnet.close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a> method is called:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">telnetlib</span> <span class="kn">import</span> <span class="n">Telnet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Telnet</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span> <span class="k">as</span> <span class="n">tn</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">tn</span><span class="o">.</span><span class="n">interact</span><span class="p">()</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.6: </span>Context manager support added</p>
+</div>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><span class="target" id="index-2"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc854.html"><strong>RFC 854</strong></a> - Telnet Protocol Specification</dt><dd><p>Definition of the Telnet protocol.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="telnet-objects">
+<span id="id3"></span><h2>Telnet Objects<a class="headerlink" href="#telnet-objects" title="Permalink to this headline"></a></h2>
+<p><a class="reference internal" href="#telnetlib.Telnet" title="telnetlib.Telnet"><code class="xref py py-class docutils literal notranslate"><span class="pre">Telnet</span></code></a> instances have the following methods:</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.read_until">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">read_until</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.read_until" title="Permalink to this definition"></a></dt>
+<dd><p>Read until a given byte string, <em>expected</em>, is encountered or until <em>timeout</em>
+seconds have passed.</p>
+<p>When no match is found, return whatever is available instead, possibly empty
+bytes.  Raise <a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a> if the connection is closed and no cooked data
+is available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.read_all">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">read_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.read_all" title="Permalink to this definition"></a></dt>
+<dd><p>Read all data until EOF as bytes; block until connection closed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.read_some">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">read_some</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.read_some" title="Permalink to this definition"></a></dt>
+<dd><p>Read at least one byte of cooked data unless EOF is hit. Return <code class="docutils literal notranslate"><span class="pre">b''</span></code> if
+EOF is hit.  Block if no data is immediately available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.read_very_eager">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">read_very_eager</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.read_very_eager" title="Permalink to this definition"></a></dt>
+<dd><p>Read everything that can be without blocking in I/O (eager).</p>
+<p>Raise <a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a> if connection closed and no cooked data available.
+Return <code class="docutils literal notranslate"><span class="pre">b''</span></code> if no cooked data available otherwise. Do not block unless in
+the midst of an IAC sequence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.read_eager">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">read_eager</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.read_eager" title="Permalink to this definition"></a></dt>
+<dd><p>Read readily available data.</p>
+<p>Raise <a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a> if connection closed and no cooked data available.
+Return <code class="docutils literal notranslate"><span class="pre">b''</span></code> if no cooked data available otherwise. Do not block unless in
+the midst of an IAC sequence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.read_lazy">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">read_lazy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.read_lazy" title="Permalink to this definition"></a></dt>
+<dd><p>Process and return data already in the queues (lazy).</p>
+<p>Raise <a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a> if connection closed and no data available. Return
+<code class="docutils literal notranslate"><span class="pre">b''</span></code> if no cooked data available otherwise.  Do not block unless in the
+midst of an IAC sequence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.read_very_lazy">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">read_very_lazy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.read_very_lazy" title="Permalink to this definition"></a></dt>
+<dd><p>Return any data available in the cooked queue (very lazy).</p>
+<p>Raise <a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a> if connection closed and no data available. Return
+<code class="docutils literal notranslate"><span class="pre">b''</span></code> if no cooked data available otherwise.  This method never blocks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.read_sb_data">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">read_sb_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.read_sb_data" title="Permalink to this definition"></a></dt>
+<dd><p>Return the data collected between a SB/SE pair (suboption begin/end). The
+callback should access these data when it was invoked with a <code class="docutils literal notranslate"><span class="pre">SE</span></code> command.
+This method never blocks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.open">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">host</span></em>, <em class="sig-param"><span class="pre">port=0</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">timeout</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.open" title="Permalink to this definition"></a></dt>
+<dd><p>Connect to a host. The optional second argument is the port number, which
+defaults to the standard Telnet port (23). The optional <em>timeout</em> parameter
+specifies a timeout in seconds for blocking operations like the connection
+attempt (if not specified, the global default timeout setting will be used).</p>
+<p>Do not try to reopen an already connected instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.msg">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.msg" title="Permalink to this definition"></a></dt>
+<dd><p>Print a debug message when the debug level is <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 0. If extra arguments are
+present, they are substituted in the message using the standard string
+formatting operator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.set_debuglevel">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">set_debuglevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debuglevel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.set_debuglevel" title="Permalink to this definition"></a></dt>
+<dd><p>Set the debug level.  The higher the value of <em>debuglevel</em>, the more debug
+output you get (on <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.close">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.close" title="Permalink to this definition"></a></dt>
+<dd><p>Close the connection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.get_socket">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">get_socket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.get_socket" title="Permalink to this definition"></a></dt>
+<dd><p>Return the socket object used internally.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.fileno">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">fileno</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.fileno" title="Permalink to this definition"></a></dt>
+<dd><p>Return the file descriptor of the socket object used internally.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.write">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.write" title="Permalink to this definition"></a></dt>
+<dd><p>Write a byte string to the socket, doubling any IAC characters. This can
+block if the connection is blocked.  May raise <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> if the
+connection is closed.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.3: </span>This method used to raise <a class="reference internal" href="socket.html#socket.error" title="socket.error"><code class="xref py py-exc docutils literal notranslate"><span class="pre">socket.error</span></code></a>, which is now an alias
+of <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.interact">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">interact</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.interact" title="Permalink to this definition"></a></dt>
+<dd><p>Interaction function, emulates a very dumb Telnet client.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.mt_interact">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">mt_interact</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.mt_interact" title="Permalink to this definition"></a></dt>
+<dd><p>Multithreaded version of <a class="reference internal" href="#telnetlib.Telnet.interact" title="telnetlib.Telnet.interact"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interact()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.expect">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">expect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.expect" title="Permalink to this definition"></a></dt>
+<dd><p>Read until one from a list of a regular expressions matches.</p>
+<p>The first argument is a list of regular expressions, either compiled
+(<a class="reference internal" href="re.html#re-objects"><span class="std std-ref">regex objects</span></a>) or uncompiled (byte strings). The
+optional second argument is a timeout, in seconds; the default is to block
+indefinitely.</p>
+<p>Return a tuple of three items: the index in the list of the first regular
+expression that matches; the match object returned; and the bytes read up
+till and including the match.</p>
+<p>If end of file is found and no bytes were read, raise <a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a>.
+Otherwise, when nothing matches, return <code class="docutils literal notranslate"><span class="pre">(-1,</span> <span class="pre">None,</span> <span class="pre">data)</span></code> where <em>data</em> is
+the bytes received so far (may be empty bytes if a timeout happened).</p>
+<p>If a regular expression ends with a greedy match (such as <code class="docutils literal notranslate"><span class="pre">.*</span></code>) or if more
+than one expression can match the same input, the results are
+non-deterministic, and may depend on the I/O timing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="telnetlib.Telnet.set_option_negotiation_callback">
+<span class="sig-prename descclassname"><span class="pre">Telnet.</span></span><span class="sig-name descname"><span class="pre">set_option_negotiation_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#telnetlib.Telnet.set_option_negotiation_callback" title="Permalink to this definition"></a></dt>
+<dd><p>Each time a telnet option is read on the input flow, this <em>callback</em> (if set) is
+called with the following parameters: callback(telnet socket, command
+(DO/DONT/WILL/WONT), option).  No other action is done afterwards by telnetlib.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="telnet-example">
+<span id="id4"></span><h2>Telnet Example<a class="headerlink" href="#telnet-example" title="Permalink to this headline"></a></h2>
+<p>A simple example illustrating typical use:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="kn">import</span> <span class="nn">telnetlib</span>
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+<span class="n">user</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your remote account: &quot;</span><span class="p">)</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">()</span>
+
+<span class="n">tn</span> <span class="o">=</span> <span class="n">telnetlib</span><span class="o">.</span><span class="n">Telnet</span><span class="p">(</span><span class="n">HOST</span><span class="p">)</span>
+
+<span class="n">tn</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;login: &quot;</span><span class="p">)</span>
+<span class="n">tn</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">password</span><span class="p">:</span>
+    <span class="n">tn</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Password: &quot;</span><span class="p">)</span>
+    <span class="n">tn</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">password</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">tn</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;ls</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">tn</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;exit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tn</span><span class="o">.</span><span class="n">read_all</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="smtpd.html" class="btn btn-neutral float-left" title="smtpd — SMTP Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="uuid.html" class="btn btn-neutral float-right" title="uuid — UUID objects according to RFC 4122" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Descriptor Objects &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="Slice Objects" href="slice.html" />
+    <link rel="prev" title="Iterator Objects" href="iterator.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/descriptor.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">The Python Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python/C API Reference Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stable.html">C API Stability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="veryhigh.html">The Very High Level Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refcounting.html">Reference Counting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abstract.html">Abstract Objects Layer</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="concrete.html">Concrete Objects Layer</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="concrete.html#fundamental-objects">Fundamental Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="concrete.html#numeric-objects">Numeric Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="concrete.html#sequence-objects">Sequence Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="concrete.html#container-objects">Container Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="concrete.html#function-objects">Function Objects</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="concrete.html#other-objects">Other Objects</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="file.html">File Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module.html">Module Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="iterator.html">Iterator Objects</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Descriptor Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="slice.html">Slice Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="slice.html#ellipsis-object">Ellipsis Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="memoryview.html">MemoryView objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="weakref.html">Weak Reference Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="capsule.html">Capsules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen.html">Generator Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coro.html">Coroutine Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contextvars.html">Context Variables Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="datetime.html">DateTime Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="typehints.html">Objects for Type Hinting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Initialization, Finalization, and Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init_config.html">Python Initialization Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html">Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objimpl.html">Object Implementation Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apiabiversion.html">API and ABI Versioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Python/C API Reference Manual</a> &raquo;</li>
+          <li><a href="concrete.html">Concrete Objects Layer</a> &raquo;</li>
+      <li>Descriptor Objects</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/c-api/descriptor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="descriptor-objects">
+<span id="id1"></span><h1>Descriptor Objects<a class="headerlink" href="#descriptor-objects" title="Permalink to this headline"></a></h1>
+<p>“Descriptors” are objects that describe some attribute of an object. They are
+found in the dictionary of type objects.</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.PyProperty_Type">
+<a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n"><span class="pre">PyTypeObject</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyProperty_Type</span></span></span><a class="headerlink" href="#c.PyProperty_Type" title="Permalink to this definition"></a><br /></dt>
+<dd><p>The type object for the built-in descriptor types.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyDescr_NewGetSet">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyDescr_NewGetSet</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n"><span class="pre">PyTypeObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">type</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structures.html#c.PyGetSetDef" title="PyGetSetDef"><span class="n"><span class="pre">PyGetSetDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">getset</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDescr_NewGetSet" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyDescr_NewMember">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyDescr_NewMember</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n"><span class="pre">PyTypeObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">type</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structures.html#c.PyMemberDef" title="PyMemberDef"><span class="n"><span class="pre">PyMemberDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">meth</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDescr_NewMember" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyDescr_NewMethod">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyDescr_NewMethod</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n"><span class="pre">PyTypeObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">type</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structures.html#c.PyMethodDef" title="PyMethodDef"><span class="n"><span class="pre">PyMethodDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">meth</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDescr_NewMethod" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyDescr_NewWrapper">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyDescr_NewWrapper</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n"><span class="pre">PyTypeObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">type</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">wrapperbase</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">wrapper</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">wrapped</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDescr_NewWrapper" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyDescr_NewClassMethod">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyDescr_NewClassMethod</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n"><span class="pre">PyTypeObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">type</span></span>, <a class="reference internal" href="structures.html#c.PyMethodDef" title="PyMethodDef"><span class="n"><span class="pre">PyMethodDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">method</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDescr_NewClassMethod" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyDescr_IsData">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyDescr_IsData</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">descr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDescr_IsData" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Return non-zero if the descriptor objects <em>descr</em> describes a data attribute, or
+<code class="docutils literal notranslate"><span class="pre">0</span></code> if it describes a method.  <em>descr</em> must be a descriptor object; there is
+no error checking.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyWrapper_New">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyWrapper_New</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="p"><span class="pre">*</span></span>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="p"><span class="pre">*</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyWrapper_New" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="iterator.html" class="btn btn-neutral float-left" title="Iterator Objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="slice.html" class="btn btn-neutral float-right" title="Slice Objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

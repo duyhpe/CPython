@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superseded Modules &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="optparse — Parser for command line options" href="optparse.html" />
+    <link rel="prev" title="syslog — Unix syslog library routines" href="syslog.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/superseded.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Python Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Built-in Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdtypes.html">Built-in Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Built-in Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text Processing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">Binary Data Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric.html">Numeric and Mathematical Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">File and Directory Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archiving.html">Data Compression and Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileformats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">Cryptographic Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allos.html">Generic Operating System Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concurrency.html">Concurrent Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">Networking and Interprocess Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netdata.html">Internet Data Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markup.html">Structured Markup Processing Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internet.html">Internet Protocols and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mm.html">Multimedia Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Program Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tk.html">Graphical User Interfaces with Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging and Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">Software Packaging and Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python Runtime Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custominterp.html">Custom Python Interpreters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Importing Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Python Language Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">MS Windows Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix.html">Unix Specific Services</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Superseded Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">optparse</span></code> — Parser for command line options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imp</span></code> — Access the <span class="xref std std-ref">import</span> internals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undoc.html">Undocumented Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_warnings.html">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">The Python Standard Library</a> &raquo;</li>
+      <li>Superseded Modules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/superseded.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="superseded-modules">
+<span id="superseded"></span><h1>Superseded Modules<a class="headerlink" href="#superseded-modules" title="Permalink to this headline"></a></h1>
+<p>The modules described in this chapter are deprecated and only kept for
+backwards compatibility. They have been superseded by other modules.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="optparse.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">optparse</span></code> — Parser for command line options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#background">Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#terminology">Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#what-are-options-for">What are options for?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#what-are-positional-arguments-for">What are positional arguments for?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#tutorial">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#understanding-option-actions">Understanding option actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#the-store-action">The store action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#handling-boolean-flag-options">Handling boolean (flag) options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#other-actions">Other actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#default-values">Default values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#generating-help">Generating help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="optparse.html#grouping-options">Grouping Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#printing-a-version-string">Printing a version string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#how-optparse-handles-errors">How <code class="xref py py-mod docutils literal notranslate"><span class="pre">optparse</span></code> handles errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#putting-it-all-together">Putting it all together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#reference-guide">Reference Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#creating-the-parser">Creating the parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#populating-the-parser">Populating the parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#defining-options">Defining options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#option-attributes">Option attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#standard-option-actions">Standard option actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#standard-option-types">Standard option types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#parsing-arguments">Parsing arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#querying-and-manipulating-your-option-parser">Querying and manipulating your option parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#conflicts-between-options">Conflicts between options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#cleanup">Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#other-methods">Other methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#option-callbacks">Option Callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#defining-a-callback-option">Defining a callback option</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#how-callbacks-are-called">How callbacks are called</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#raising-errors-in-a-callback">Raising errors in a callback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-1-trivial-callback">Callback example 1: trivial callback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-2-check-option-order">Callback example 2: check option order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-3-check-option-order-generalized">Callback example 3: check option order (generalized)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-4-check-arbitrary-condition">Callback example 4: check arbitrary condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-5-fixed-arguments">Callback example 5: fixed arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-6-variable-arguments">Callback example 6: variable arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#extending-optparse">Extending <code class="xref py py-mod docutils literal notranslate"><span class="pre">optparse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#adding-new-types">Adding new types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#adding-new-actions">Adding new actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imp</span></code> — Access the <span class="xref std std-ref">import</span> internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imp.html#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="syslog.html" class="btn btn-neutral float-left" title="syslog — Unix syslog library routines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="optparse.html" class="btn btn-neutral float-right" title="optparse — Parser for command line options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

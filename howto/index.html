@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python HOWTOs &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="Porting Python 2 Code to Python 3" href="pyporting.html" />
+    <link rel="prev" title="Installing Python Modules" href="../installing/index.html" />
+    <link rel="canonical" href="https://docs.python.org/3/howto/index.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">The Python Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python HOWTOs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyporting.html">Porting Python 2 Code to Python 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cporting.html">Porting Extension Modules to Python 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="curses.html">Curses Programming with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="descriptor.html">Descriptor HowTo Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum.html">Enum HOWTO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming HOWTO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging HOWTO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging-cookbook.html">Logging Cookbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regex.html">Regular Expression HOWTO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sockets.html">Socket Programming HOWTO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sorting.html">Sorting HOW TO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unicode.html">Unicode HOWTO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="urllib2.html">HOWTO Fetch Internet Resources Using The urllib Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="argparse.html">Argparse Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipaddress.html">An introduction to the ipaddress module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clinic.html">Argument Clinic How-To</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instrumentation.html">Instrumenting CPython with DTrace and SystemTap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotations.html">Annotations Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Python HOWTOs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/howto/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="python-howtos">
+<h1>Python HOWTOs<a class="headerlink" href="#python-howtos" title="Permalink to this headline"></a></h1>
+<p>Python HOWTOs are documents that cover a single, specific topic,
+and attempt to cover it fairly completely. Modelled on the Linux
+Documentation Project’s HOWTO collection, this collection is an
+effort to foster documentation that’s more detailed than the
+Python Library Reference.</p>
+<p>Currently, the HOWTOs are:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyporting.html">Porting Python 2 Code to Python 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cporting.html">Porting Extension Modules to Python 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="curses.html">Curses Programming with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptor.html">Descriptor HowTo Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enum.html">Enum HOWTO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functional.html">Functional Programming HOWTO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging HOWTO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging-cookbook.html">Logging Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regex.html">Regular Expression HOWTO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sockets.html">Socket Programming HOWTO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sorting.html">Sorting HOW TO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unicode.html">Unicode HOWTO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="urllib2.html">HOWTO Fetch Internet Resources Using The urllib Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="argparse.html">Argparse Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipaddress.html">An introduction to the ipaddress module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clinic.html">Argument Clinic How-To</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation.html">Instrumenting CPython with DTrace and SystemTap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations Best Practices</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../installing/index.html" class="btn btn-neutral float-left" title="Installing Python Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyporting.html" class="btn btn-neutral float-right" title="Porting Python 2 Code to Python 3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

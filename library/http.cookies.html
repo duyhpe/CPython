@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>http.cookies — HTTP state management &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="http.cookiejar — Cookie handling for HTTP clients" href="http.cookiejar.html" />
+    <link rel="prev" title="http.server — HTTP servers" href="http.server.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/http.cookies.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Python Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Built-in Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdtypes.html">Built-in Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Built-in Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text Processing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">Binary Data Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric.html">Numeric and Mathematical Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">File and Directory Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archiving.html">Data Compression and Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileformats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">Cryptographic Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allos.html">Generic Operating System Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concurrency.html">Concurrent Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">Networking and Interprocess Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netdata.html">Internet Data Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markup.html">Structured Markup Processing Tools</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="internet.html">Internet Protocols and Support</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="webbrowser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">webbrowser</span></code> — Convenient web-browser controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgi.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgi</span></code> — Common Gateway Interface support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cgitb.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgitb</span></code> — Traceback manager for CGI scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wsgiref.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wsgiref</span></code> — WSGI Utilities and Reference Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib</span></code> — URL handling modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.request.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.request</span></code> — Extensible library for opening URLs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.request.html#module-urllib.response"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.response</span></code> — Response classes used by urllib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.parse.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.parse</span></code> — Parse URLs into components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.error</span></code> — Exception classes raised by urllib.request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="urllib.robotparser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.robotparser</span></code> —  Parser for robots.txt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http</span></code> — HTTP modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http.client.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.client</span></code> — HTTP protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ftplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ftplib</span></code> — FTP protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="poplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">poplib</span></code> — POP3 protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imaplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imaplib</span></code> — IMAP4 protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nntplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nntplib</span></code> — NNTP protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smtplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtplib</span></code> — SMTP protocol client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smtpd.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtpd</span></code> — SMTP Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="telnetlib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code> — Telnet client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uuid.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uuid</span></code> — UUID objects according to <strong>RFC 4122</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="socketserver.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">socketserver</span></code> — A framework for network servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http.server.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.server</span></code> — HTTP servers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code> — HTTP state management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cookie-objects">Cookie Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#morsel-objects">Morsel Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="http.cookiejar.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code> — Cookie handling for HTTP clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xmlrpc.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc</span></code> — XMLRPC server and client modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xmlrpc.client.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc.client</span></code> — XML-RPC client access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xmlrpc.server.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc.server</span></code> — Basic XML-RPC servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipaddress.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code> — IPv4/IPv6 manipulation library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mm.html">Multimedia Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Program Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tk.html">Graphical User Interfaces with Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging and Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">Software Packaging and Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python Runtime Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custominterp.html">Custom Python Interpreters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Importing Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Python Language Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">MS Windows Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix.html">Unix Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="superseded.html">Superseded Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undoc.html">Undocumented Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_warnings.html">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">The Python Standard Library</a> &raquo;</li>
+          <li><a href="internet.html">Internet Protocols and Support</a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code> — HTTP state management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/http.cookies.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-http.cookies">
+<span id="http-cookies-http-state-management"></span><h1><a class="reference internal" href="#module-http.cookies" title="http.cookies: Support for HTTP state management (cookies)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code></a> — HTTP state management<a class="headerlink" href="#module-http.cookies" title="Permalink to this headline"></a></h1>
+<p><strong>Source code:</strong> <a href="#id1"><span class="problematic" id="id2">:source:`Lib/http/cookies.py`</span></a></p>
+<hr class="docutils" />
+<p>The <a class="reference internal" href="#module-http.cookies" title="http.cookies: Support for HTTP state management (cookies)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code></a> module defines classes for abstracting the concept of
+cookies, an HTTP state management mechanism. It supports both simple string-only
+cookies, and provides an abstraction for having any serializable data-type as
+cookie value.</p>
+<p>The module formerly strictly applied the parsing rules described in the
+<span class="target" id="index-0"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2109.html"><strong>RFC 2109</strong></a> and <span class="target" id="index-1"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2068.html"><strong>RFC 2068</strong></a> specifications.  It has since been discovered that
+MSIE 3.0x doesn’t follow the character rules outlined in those specs and also
+many current day browsers and servers have relaxed parsing rules when comes to
+Cookie handling.  As a result, the parsing rules used are a bit less strict.</p>
+<p>The character set, <a class="reference internal" href="string.html#string.ascii_letters" title="string.ascii_letters"><code class="xref py py-data docutils literal notranslate"><span class="pre">string.ascii_letters</span></code></a>, <a class="reference internal" href="string.html#string.digits" title="string.digits"><code class="xref py py-data docutils literal notranslate"><span class="pre">string.digits</span></code></a> and
+<code class="docutils literal notranslate"><span class="pre">!#$%&amp;'*+-.^_`|~:</span></code> denote the set of valid characters allowed by this module
+in Cookie name (as <a class="reference internal" href="#http.cookies.Morsel.key" title="http.cookies.Morsel.key"><code class="xref py py-attr docutils literal notranslate"><span class="pre">key</span></code></a>).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.3: </span>Allowed ‘:’ as a valid Cookie name character.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On encountering an invalid cookie, <a class="reference internal" href="#http.cookies.CookieError" title="http.cookies.CookieError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CookieError</span></code></a> is raised, so if your
+cookie data comes from a browser you should always prepare for invalid data
+and catch <a class="reference internal" href="#http.cookies.CookieError" title="http.cookies.CookieError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CookieError</span></code></a> on parsing.</p>
+</div>
+<dl class="py exception">
+<dt class="sig sig-object py" id="http.cookies.CookieError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">http.cookies.</span></span><span class="sig-name descname"><span class="pre">CookieError</span></span><a class="headerlink" href="#http.cookies.CookieError" title="Permalink to this definition"></a></dt>
+<dd><p>Exception failing because of <span class="target" id="index-2"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2109.html"><strong>RFC 2109</strong></a> invalidity: incorrect attributes,
+incorrect <em class="mailheader">Set-Cookie</em> header, etc.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="http.cookies.BaseCookie">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">http.cookies.</span></span><span class="sig-name descname"><span class="pre">BaseCookie</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">input</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.BaseCookie" title="Permalink to this definition"></a></dt>
+<dd><p>This class is a dictionary-like object whose keys are strings and whose values
+are <a class="reference internal" href="#http.cookies.Morsel" title="http.cookies.Morsel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morsel</span></code></a> instances. Note that upon setting a key to a value, the
+value is first converted to a <a class="reference internal" href="#http.cookies.Morsel" title="http.cookies.Morsel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morsel</span></code></a> containing the key and the value.</p>
+<p>If <em>input</em> is given, it is passed to the <a class="reference internal" href="#http.cookies.BaseCookie.load" title="http.cookies.BaseCookie.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code></a> method.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="http.cookies.SimpleCookie">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">http.cookies.</span></span><span class="sig-name descname"><span class="pre">SimpleCookie</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">input</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.SimpleCookie" title="Permalink to this definition"></a></dt>
+<dd><p>This class derives from <a class="reference internal" href="#http.cookies.BaseCookie" title="http.cookies.BaseCookie"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCookie</span></code></a> and overrides <code class="xref py py-meth docutils literal notranslate"><span class="pre">value_decode()</span></code>
+and <code class="xref py py-meth docutils literal notranslate"><span class="pre">value_encode()</span></code>. SimpleCookie supports strings as cookie values.
+When setting the value, SimpleCookie calls the builtin <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> to convert
+the value to a string. Values received from HTTP are kept as strings.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt>Module <a class="reference internal" href="http.cookiejar.html#module-http.cookiejar" title="http.cookiejar: Classes for automatic handling of HTTP cookies."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code></a></dt><dd><p>HTTP cookie handling for web <em>clients</em>.  The <a class="reference internal" href="http.cookiejar.html#module-http.cookiejar" title="http.cookiejar: Classes for automatic handling of HTTP cookies."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code></a> and
+<a class="reference internal" href="#module-http.cookies" title="http.cookies: Support for HTTP state management (cookies)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code></a> modules do not depend on each other.</p>
+</dd>
+<dt><span class="target" id="index-3"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2109.html"><strong>RFC 2109</strong></a> - HTTP State Management Mechanism</dt><dd><p>This is the state management specification implemented by this module.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="cookie-objects">
+<span id="id3"></span><h2>Cookie Objects<a class="headerlink" href="#cookie-objects" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.BaseCookie.value_decode">
+<span class="sig-prename descclassname"><span class="pre">BaseCookie.</span></span><span class="sig-name descname"><span class="pre">value_decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.BaseCookie.value_decode" title="Permalink to this definition"></a></dt>
+<dd><p>Return a tuple <code class="docutils literal notranslate"><span class="pre">(real_value,</span> <span class="pre">coded_value)</span></code> from a string representation.
+<code class="docutils literal notranslate"><span class="pre">real_value</span></code> can be any type. This method does no decoding in
+<a class="reference internal" href="#http.cookies.BaseCookie" title="http.cookies.BaseCookie"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCookie</span></code></a> — it exists so it can be overridden.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.BaseCookie.value_encode">
+<span class="sig-prename descclassname"><span class="pre">BaseCookie.</span></span><span class="sig-name descname"><span class="pre">value_encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.BaseCookie.value_encode" title="Permalink to this definition"></a></dt>
+<dd><p>Return a tuple <code class="docutils literal notranslate"><span class="pre">(real_value,</span> <span class="pre">coded_value)</span></code>. <em>val</em> can be any type, but
+<code class="docutils literal notranslate"><span class="pre">coded_value</span></code> will always be converted to a string.
+This method does no encoding in <a class="reference internal" href="#http.cookies.BaseCookie" title="http.cookies.BaseCookie"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCookie</span></code></a> — it exists so it can
+be overridden.</p>
+<p>In general, it should be the case that <a class="reference internal" href="#http.cookies.BaseCookie.value_encode" title="http.cookies.BaseCookie.value_encode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">value_encode()</span></code></a> and
+<a class="reference internal" href="#http.cookies.BaseCookie.value_decode" title="http.cookies.BaseCookie.value_decode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">value_decode()</span></code></a> are inverses on the range of <em>value_decode</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.BaseCookie.output">
+<span class="sig-prename descclassname"><span class="pre">BaseCookie.</span></span><span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Set-Cookie:'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\r\n'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.BaseCookie.output" title="Permalink to this definition"></a></dt>
+<dd><p>Return a string representation suitable to be sent as HTTP headers. <em>attrs</em> and
+<em>header</em> are sent to each <a class="reference internal" href="#http.cookies.Morsel" title="http.cookies.Morsel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morsel</span></code></a>’s <a class="reference internal" href="#http.cookies.BaseCookie.output" title="http.cookies.BaseCookie.output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output()</span></code></a> method. <em>sep</em> is used
+to join the headers together, and is by default the combination <code class="docutils literal notranslate"><span class="pre">'\r\n'</span></code>
+(CRLF).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.BaseCookie.js_output">
+<span class="sig-prename descclassname"><span class="pre">BaseCookie.</span></span><span class="sig-name descname"><span class="pre">js_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.BaseCookie.js_output" title="Permalink to this definition"></a></dt>
+<dd><p>Return an embeddable JavaScript snippet, which, if run on a browser which
+supports JavaScript, will act the same as if the HTTP headers was sent.</p>
+<p>The meaning for <em>attrs</em> is the same as in <a class="reference internal" href="#http.cookies.BaseCookie.output" title="http.cookies.BaseCookie.output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.BaseCookie.load">
+<span class="sig-prename descclassname"><span class="pre">BaseCookie.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rawdata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.BaseCookie.load" title="Permalink to this definition"></a></dt>
+<dd><p>If <em>rawdata</em> is a string, parse it as an <code class="docutils literal notranslate"><span class="pre">HTTP_COOKIE</span></code> and add the values
+found there as <a class="reference internal" href="#http.cookies.Morsel" title="http.cookies.Morsel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morsel</span></code></a>s. If it is a dictionary, it is equivalent to:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">rawdata</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">cookie</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="morsel-objects">
+<span id="id4"></span><h2>Morsel Objects<a class="headerlink" href="#morsel-objects" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="http.cookies.Morsel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">http.cookies.</span></span><span class="sig-name descname"><span class="pre">Morsel</span></span><a class="headerlink" href="#http.cookies.Morsel" title="Permalink to this definition"></a></dt>
+<dd><p>Abstract a key/value pair, which has some <span class="target" id="index-4"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2109.html"><strong>RFC 2109</strong></a> attributes.</p>
+<p>Morsels are dictionary-like objects, whose set of keys is constant — the valid
+<span class="target" id="index-5"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2109.html"><strong>RFC 2109</strong></a> attributes, which are</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">expires</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">comment</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">domain</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max-age</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secure</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">httponly</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">samesite</span></code></p></li>
+</ul>
+<p>The attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">httponly</span></code> specifies that the cookie is only transferred
+in HTTP requests, and is not accessible through JavaScript. This is intended
+to mitigate some forms of cross-site scripting.</p>
+<p>The attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">samesite</span></code> specifies that the browser is not allowed to
+send the cookie along with cross-site requests. This helps to mitigate CSRF
+attacks. Valid values for this attribute are “Strict” and “Lax”.</p>
+<p>The keys are case-insensitive and their default value is <code class="docutils literal notranslate"><span class="pre">''</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.5: </span><code class="xref py py-meth docutils literal notranslate"><span class="pre">__eq__()</span></code> now takes <a class="reference internal" href="#http.cookies.Morsel.key" title="http.cookies.Morsel.key"><code class="xref py py-attr docutils literal notranslate"><span class="pre">key</span></code></a> and <a class="reference internal" href="#http.cookies.Morsel.value" title="http.cookies.Morsel.value"><code class="xref py py-attr docutils literal notranslate"><span class="pre">value</span></code></a>
+into account.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.7: </span>Attributes <a class="reference internal" href="#http.cookies.Morsel.key" title="http.cookies.Morsel.key"><code class="xref py py-attr docutils literal notranslate"><span class="pre">key</span></code></a>, <a class="reference internal" href="#http.cookies.Morsel.value" title="http.cookies.Morsel.value"><code class="xref py py-attr docutils literal notranslate"><span class="pre">value</span></code></a> and
+<a class="reference internal" href="#http.cookies.Morsel.coded_value" title="http.cookies.Morsel.coded_value"><code class="xref py py-attr docutils literal notranslate"><span class="pre">coded_value</span></code></a> are read-only.  Use <a class="reference internal" href="#http.cookies.Morsel.set" title="http.cookies.Morsel.set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set()</span></code></a> for
+setting them.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.8: </span>Added support for the <code class="xref py py-attr docutils literal notranslate"><span class="pre">samesite</span></code> attribute.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="http.cookies.Morsel.value">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#http.cookies.Morsel.value" title="Permalink to this definition"></a></dt>
+<dd><p>The value of the cookie.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="http.cookies.Morsel.coded_value">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">coded_value</span></span><a class="headerlink" href="#http.cookies.Morsel.coded_value" title="Permalink to this definition"></a></dt>
+<dd><p>The encoded value of the cookie — this is what should be sent.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="http.cookies.Morsel.key">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">key</span></span><a class="headerlink" href="#http.cookies.Morsel.key" title="Permalink to this definition"></a></dt>
+<dd><p>The name of the cookie.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.Morsel.set">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coded_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.Morsel.set" title="Permalink to this definition"></a></dt>
+<dd><p>Set the <em>key</em>, <em>value</em> and <em>coded_value</em> attributes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.Morsel.isReservedKey">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">isReservedKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.Morsel.isReservedKey" title="Permalink to this definition"></a></dt>
+<dd><p>Whether <em>K</em> is a member of the set of keys of a <a class="reference internal" href="#http.cookies.Morsel" title="http.cookies.Morsel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morsel</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.Morsel.output">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Set-Cookie:'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.Morsel.output" title="Permalink to this definition"></a></dt>
+<dd><p>Return a string representation of the Morsel, suitable to be sent as an HTTP
+header. By default, all the attributes are included, unless <em>attrs</em> is given, in
+which case it should be a list of attributes to use. <em>header</em> is by default
+<code class="docutils literal notranslate"><span class="pre">&quot;Set-Cookie:&quot;</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.Morsel.js_output">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">js_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.Morsel.js_output" title="Permalink to this definition"></a></dt>
+<dd><p>Return an embeddable JavaScript snippet, which, if run on a browser which
+supports JavaScript, will act the same as if the HTTP header was sent.</p>
+<p>The meaning for <em>attrs</em> is the same as in <a class="reference internal" href="#http.cookies.Morsel.output" title="http.cookies.Morsel.output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.Morsel.OutputString">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">OutputString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.Morsel.OutputString" title="Permalink to this definition"></a></dt>
+<dd><p>Return a string representing the Morsel, without any surrounding HTTP or
+JavaScript.</p>
+<p>The meaning for <em>attrs</em> is the same as in <a class="reference internal" href="#http.cookies.Morsel.output" title="http.cookies.Morsel.output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.Morsel.update">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.Morsel.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update the values in the Morsel dictionary with the values in the dictionary
+<em>values</em>.  Raise an error if any of the keys in the <em>values</em> dict is not a
+valid <span class="target" id="index-6"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2109.html"><strong>RFC 2109</strong></a> attribute.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.5: </span>an error is raised for invalid keys.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.Morsel.copy">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.Morsel.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Return a shallow copy of the Morsel object.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.5: </span>return a Morsel object instead of a dict.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="http.cookies.Morsel.setdefault">
+<span class="sig-prename descclassname"><span class="pre">Morsel.</span></span><span class="sig-name descname"><span class="pre">setdefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.Morsel.setdefault" title="Permalink to this definition"></a></dt>
+<dd><p>Raise an error if key is not a valid <span class="target" id="index-7"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2109.html"><strong>RFC 2109</strong></a> attribute, otherwise
+behave the same as <a class="reference internal" href="stdtypes.html#dict.setdefault" title="dict.setdefault"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.setdefault()</span></code></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="example">
+<span id="cookie-example"></span><h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
+<p>The following example demonstrates how to use the <a class="reference internal" href="#module-http.cookies" title="http.cookies: Support for HTTP state management (cookies)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code></a> module.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="http.server.html" class="btn btn-neutral float-left" title="http.server — HTTP servers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="http.cookiejar.html" class="btn btn-neutral float-right" title="http.cookiejar — Cookie handling for HTTP clients" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

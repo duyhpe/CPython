@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="_static/opensearch.xml"/>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="#" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    
+    <link rel="canonical" href="https://docs.python.org/3/search.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+    <script type="text/javascript">
+        var GLOSSARY_PAGE = 'glossary.html';
+
+        jQuery(function() {
+            $.getJSON("_static/glossary.json", function(glossary) {
+                var RESULT_TEMPLATE = '<div style="display: none" class="admonition seealso" id="glossary-result">' +
+                                      '  <p class="topic-title">' +
+                                      '    <a class="glossary-title" href="#"></a>' +
+                                      '  </p>' +
+                                      '  <div class="glossary-body"></div>' +
+                                      '</div>';
+                $("#search-results").prepend(RESULT_TEMPLATE);
+
+                var params = $.getQueryParameters();
+                if (params.q) {
+                    var search_param = params.q[0].toLowerCase();
+                    var glossary_item = glossary[search_param];
+                    if (glossary_item) {
+                        var resultDiv = $("#glossary-result");
+
+                        // set up the title text with a link to the glossary page
+                        resultDiv.find(".glossary-title").text('Glossary: ' + glossary_item.title);
+                        var link_target = search_param.replace(/ /g, '-');
+                        resultDiv.find(".glossary-title").attr(
+                            'href', GLOSSARY_PAGE + '#term-' + link_target
+                        );
+
+                        // rewrite any anchor links (to other glossary terms)
+                        // to have a full reference to the glossary page
+                        var body = $(glossary_item.body).children();
+                        body.find("a[href^='#']").each(function() {
+                            var current_url = $(this).attr('href');
+                            $(this).attr('href', GLOSSARY_PAGE + current_url);
+                        });
+                        resultDiv.find(".glossary-body").html(body);
+
+                        resultDiv.show();
+                    } else {
+                        $("#glossary-result").hide('');
+                    }
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library/index.html">The Python Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Search</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <noscript>
+  <div id="fallback" class="admonition warning">
+    <p class="last">
+      Please activate JavaScript to enable the search functionality.
+    </p>
+  </div>
+  </noscript>
+
+  
+  <div id="search-results">
+  
+  </div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+  <script>
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+  
+  <script id="searchindexloader"></script>
+   
+
+
+</body>
+</html>

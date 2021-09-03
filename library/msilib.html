@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>msilib — Read and write Microsoft Installer files &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="msvcrt — Useful routines from the MS VC++ runtime" href="msvcrt.html" />
+    <link rel="prev" title="MS Windows Specific Services" href="windows.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/msilib.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Python Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Built-in Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdtypes.html">Built-in Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Built-in Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text Processing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">Binary Data Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric.html">Numeric and Mathematical Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">File and Directory Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archiving.html">Data Compression and Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileformats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">Cryptographic Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allos.html">Generic Operating System Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concurrency.html">Concurrent Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">Networking and Interprocess Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netdata.html">Internet Data Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markup.html">Structured Markup Processing Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internet.html">Internet Protocols and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mm.html">Multimedia Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Program Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tk.html">Graphical User Interfaces with Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging and Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">Software Packaging and Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python Runtime Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custominterp.html">Custom Python Interpreters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Importing Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Python Language Services</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="windows.html">MS Windows Specific Services</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code> — Read and write Microsoft Installer files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database-objects">Database Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#view-objects">View Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summary-information-objects">Summary Information Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#record-objects">Record Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#errors">Errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cab-objects">CAB Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#directory-objects">Directory Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gui-classes">GUI classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#precomputed-tables">Precomputed tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msvcrt.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msvcrt</span></code> — Useful routines from the MS VC++ runtime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="winreg.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">winreg</span></code> — Windows registry access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="winsound.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">winsound</span></code> — Sound-playing interface for Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="unix.html">Unix Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="superseded.html">Superseded Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undoc.html">Undocumented Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_warnings.html">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">The Python Standard Library</a> &raquo;</li>
+          <li><a href="windows.html">MS Windows Specific Services</a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code> — Read and write Microsoft Installer files</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/msilib.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-msilib">
+<span id="msilib-read-and-write-microsoft-installer-files"></span><h1><a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> — Read and write Microsoft Installer files<a class="headerlink" href="#module-msilib" title="Permalink to this headline"></a></h1>
+<p><strong>Source code:</strong> <a href="#id1"><span class="problematic" id="id2">:source:`Lib/msilib/__init__.py`</span></a></p>
+<hr class="docutils" id="index-0" />
+<p>The <a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> supports the creation of Microsoft Installer (<code class="docutils literal notranslate"><span class="pre">.msi</span></code>) files.
+Because these files often contain an embedded “cabinet” file (<code class="docutils literal notranslate"><span class="pre">.cab</span></code>), it also
+exposes an API to create CAB files. Support for reading <code class="docutils literal notranslate"><span class="pre">.cab</span></code> files is
+currently not implemented; read support for the <code class="docutils literal notranslate"><span class="pre">.msi</span></code> database is possible.</p>
+<p>This package aims to provide complete access to all tables in an <code class="docutils literal notranslate"><span class="pre">.msi</span></code> file,
+therefore, it is a fairly low-level API. Two primary applications of this
+package are the <a class="reference internal" href="distutils.html#module-distutils" title="distutils: Support for building and installing Python modules into an existing Python installation."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils</span></code></a> command <code class="docutils literal notranslate"><span class="pre">bdist_msi</span></code>, and the creation of
+Python installer package itself (although that currently uses a different
+version of <code class="docutils literal notranslate"><span class="pre">msilib</span></code>).</p>
+<p>The package contents can be roughly split into four parts: low-level CAB
+routines, low-level MSI routines, higher-level MSI routines, and standard table
+structures.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.FCICreate">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">FCICreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cabname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.FCICreate" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new CAB file named <em>cabname</em>. <em>files</em> must be a list of tuples, each
+containing the name of the file on disk, and the name of the file inside the CAB
+file.</p>
+<p>The files are added to the CAB file in the order they appear in the list. All
+files are added into a single CAB file, using the MSZIP compression algorithm.</p>
+<p>Callbacks to Python for the various steps of MSI creation are currently not
+exposed.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.UuidCreate">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">UuidCreate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.UuidCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Return the string representation of a new unique identifier. This wraps the
+Windows API functions <code class="xref c c-func docutils literal notranslate"><span class="pre">UuidCreate()</span></code> and <code class="xref c c-func docutils literal notranslate"><span class="pre">UuidToString()</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.OpenDatabase">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">OpenDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.OpenDatabase" title="Permalink to this definition"></a></dt>
+<dd><p>Return a new database object by calling MsiOpenDatabase.   <em>path</em> is the file
+name of the MSI file; <em>persist</em> can be one of the constants
+<code class="docutils literal notranslate"><span class="pre">MSIDBOPEN_CREATEDIRECT</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIDBOPEN_CREATE</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIDBOPEN_DIRECT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MSIDBOPEN_READONLY</span></code>, or <code class="docutils literal notranslate"><span class="pre">MSIDBOPEN_TRANSACT</span></code>, and may include the flag
+<code class="docutils literal notranslate"><span class="pre">MSIDBOPEN_PATCHFILE</span></code>. See the Microsoft documentation for the meaning of
+these flags; depending on the flags, an existing database is opened, or a new
+one created.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.CreateRecord">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">CreateRecord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.CreateRecord" title="Permalink to this definition"></a></dt>
+<dd><p>Return a new record object by calling <code class="xref c c-func docutils literal notranslate"><span class="pre">MSICreateRecord()</span></code>. <em>count</em> is the
+number of fields of the record.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.init_database">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">init_database</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ProductName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ProductCode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ProductVersion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Manufacturer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.init_database" title="Permalink to this definition"></a></dt>
+<dd><p>Create and return a new database <em>name</em>, initialize it with <em>schema</em>, and set
+the properties <em>ProductName</em>, <em>ProductCode</em>, <em>ProductVersion</em>, and
+<em>Manufacturer</em>.</p>
+<p><em>schema</em> must be a module object containing <code class="docutils literal notranslate"><span class="pre">tables</span></code> and
+<code class="docutils literal notranslate"><span class="pre">_Validation_records</span></code> attributes; typically, <a class="reference internal" href="#msilib.schema" title="msilib.schema"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib.schema</span></code></a> should be
+used.</p>
+<p>The database will contain just the schema and the validation records when this
+function returns.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.add_data">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">add_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">records</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.add_data" title="Permalink to this definition"></a></dt>
+<dd><p>Add all <em>records</em> to the table named <em>table</em> in <em>database</em>.</p>
+<p>The <em>table</em> argument must be one of the predefined tables in the MSI schema,
+e.g. <code class="docutils literal notranslate"><span class="pre">'Feature'</span></code>, <code class="docutils literal notranslate"><span class="pre">'File'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Component'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Dialog'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Control'</span></code>,
+etc.</p>
+<p><em>records</em> should be a list of tuples, each one containing all fields of a
+record according to the schema of the table.  For optional fields,
+<code class="docutils literal notranslate"><span class="pre">None</span></code> can be passed.</p>
+<p>Field values can be ints, strings, or instances of the Binary class.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="msilib.Binary">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">Binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Binary" title="Permalink to this definition"></a></dt>
+<dd><p>Represents entries in the Binary table; inserting such an object using
+<a class="reference internal" href="#msilib.add_data" title="msilib.add_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_data()</span></code></a> reads the file named <em>filename</em> into the table.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.add_tables">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">add_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.add_tables" title="Permalink to this definition"></a></dt>
+<dd><p>Add all table content from <em>module</em> to <em>database</em>. <em>module</em> must contain an
+attribute <em>tables</em> listing all tables for which content should be added, and one
+attribute per table that has the actual content.</p>
+<p>This is typically used to install the sequence tables.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.add_stream">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">add_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.add_stream" title="Permalink to this definition"></a></dt>
+<dd><p>Add the file <em>path</em> into the <code class="docutils literal notranslate"><span class="pre">_Stream</span></code> table of <em>database</em>, with the stream
+name <em>name</em>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="msilib.gen_uuid">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">gen_uuid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.gen_uuid" title="Permalink to this definition"></a></dt>
+<dd><p>Return a new UUID, in the format that MSI typically requires (i.e. in curly
+braces, and with all hexdigits in uppercase).</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://msdn.microsoft.com/en-us/library/bb432265.aspx">FCICreate</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa379205.aspx">UuidCreate</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa379352.aspx">UuidToString</a></p>
+</div>
+<div class="section" id="database-objects">
+<span id="id3"></span><h2>Database Objects<a class="headerlink" href="#database-objects" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Database.OpenView">
+<span class="sig-prename descclassname"><span class="pre">Database.</span></span><span class="sig-name descname"><span class="pre">OpenView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Database.OpenView" title="Permalink to this definition"></a></dt>
+<dd><p>Return a view object, by calling <code class="xref c c-func docutils literal notranslate"><span class="pre">MSIDatabaseOpenView()</span></code>. <em>sql</em> is the SQL
+statement to execute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Database.Commit">
+<span class="sig-prename descclassname"><span class="pre">Database.</span></span><span class="sig-name descname"><span class="pre">Commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Database.Commit" title="Permalink to this definition"></a></dt>
+<dd><p>Commit the changes pending in the current transaction, by calling
+<code class="xref c c-func docutils literal notranslate"><span class="pre">MSIDatabaseCommit()</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Database.GetSummaryInformation">
+<span class="sig-prename descclassname"><span class="pre">Database.</span></span><span class="sig-name descname"><span class="pre">GetSummaryInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Database.GetSummaryInformation" title="Permalink to this definition"></a></dt>
+<dd><p>Return a new summary information object, by calling
+<code class="xref c c-func docutils literal notranslate"><span class="pre">MsiGetSummaryInformation()</span></code>.  <em>count</em> is the maximum number of updated
+values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Database.Close">
+<span class="sig-prename descclassname"><span class="pre">Database.</span></span><span class="sig-name descname"><span class="pre">Close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Database.Close" title="Permalink to this definition"></a></dt>
+<dd><p>Close the database object, through <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiCloseHandle()</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.7.</span></p>
+</div>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370082.aspx">MSIDatabaseOpenView</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370075.aspx">MSIDatabaseCommit</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370301.aspx">MSIGetSummaryInformation</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370067.aspx">MsiCloseHandle</a></p>
+</div>
+</div>
+<div class="section" id="view-objects">
+<span id="id4"></span><h2>View Objects<a class="headerlink" href="#view-objects" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.View.Execute">
+<span class="sig-prename descclassname"><span class="pre">View.</span></span><span class="sig-name descname"><span class="pre">Execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.View.Execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute the SQL query of the view, through <code class="xref c c-func docutils literal notranslate"><span class="pre">MSIViewExecute()</span></code>. If
+<em>params</em> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, it is a record describing actual values of the
+parameter tokens in the query.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.View.GetColumnInfo">
+<span class="sig-prename descclassname"><span class="pre">View.</span></span><span class="sig-name descname"><span class="pre">GetColumnInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.View.GetColumnInfo" title="Permalink to this definition"></a></dt>
+<dd><p>Return a record describing the columns of the view, through calling
+<code class="xref c c-func docutils literal notranslate"><span class="pre">MsiViewGetColumnInfo()</span></code>. <em>kind</em> can be either <code class="docutils literal notranslate"><span class="pre">MSICOLINFO_NAMES</span></code> or
+<code class="docutils literal notranslate"><span class="pre">MSICOLINFO_TYPES</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.View.Fetch">
+<span class="sig-prename descclassname"><span class="pre">View.</span></span><span class="sig-name descname"><span class="pre">Fetch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.View.Fetch" title="Permalink to this definition"></a></dt>
+<dd><p>Return a result record of the query, through calling <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiViewFetch()</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.View.Modify">
+<span class="sig-prename descclassname"><span class="pre">View.</span></span><span class="sig-name descname"><span class="pre">Modify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.View.Modify" title="Permalink to this definition"></a></dt>
+<dd><p>Modify the view, by calling <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiViewModify()</span></code>. <em>kind</em> can be one of
+<code class="docutils literal notranslate"><span class="pre">MSIMODIFY_SEEK</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIMODIFY_REFRESH</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIMODIFY_INSERT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MSIMODIFY_UPDATE</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIMODIFY_ASSIGN</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIMODIFY_REPLACE</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MSIMODIFY_MERGE</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIMODIFY_DELETE</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIMODIFY_INSERT_TEMPORARY</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MSIMODIFY_VALIDATE</span></code>, <code class="docutils literal notranslate"><span class="pre">MSIMODIFY_VALIDATE_NEW</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MSIMODIFY_VALIDATE_FIELD</span></code>, or <code class="docutils literal notranslate"><span class="pre">MSIMODIFY_VALIDATE_DELETE</span></code>.</p>
+<p><em>data</em> must be a record describing the new data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.View.Close">
+<span class="sig-prename descclassname"><span class="pre">View.</span></span><span class="sig-name descname"><span class="pre">Close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.View.Close" title="Permalink to this definition"></a></dt>
+<dd><p>Close the view, through <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiViewClose()</span></code>.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370513.aspx">MsiViewExecute</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370516.aspx">MSIViewGetColumnInfo</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370514.aspx">MsiViewFetch</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370519.aspx">MsiViewModify</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370510.aspx">MsiViewClose</a></p>
+</div>
+</div>
+<div class="section" id="summary-information-objects">
+<span id="summary-objects"></span><h2>Summary Information Objects<a class="headerlink" href="#summary-information-objects" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.SummaryInformation.GetProperty">
+<span class="sig-prename descclassname"><span class="pre">SummaryInformation.</span></span><span class="sig-name descname"><span class="pre">GetProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.SummaryInformation.GetProperty" title="Permalink to this definition"></a></dt>
+<dd><p>Return a property of the summary, through <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiSummaryInfoGetProperty()</span></code>.
+<em>field</em> is the name of the property, and can be one of the constants
+<code class="docutils literal notranslate"><span class="pre">PID_CODEPAGE</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_TITLE</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_SUBJECT</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_AUTHOR</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PID_KEYWORDS</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_COMMENTS</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_TEMPLATE</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_LASTAUTHOR</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PID_REVNUMBER</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_LASTPRINTED</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_CREATE_DTM</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PID_LASTSAVE_DTM</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_PAGECOUNT</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_WORDCOUNT</span></code>, <code class="docutils literal notranslate"><span class="pre">PID_CHARCOUNT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PID_APPNAME</span></code>, or <code class="docutils literal notranslate"><span class="pre">PID_SECURITY</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.SummaryInformation.GetPropertyCount">
+<span class="sig-prename descclassname"><span class="pre">SummaryInformation.</span></span><span class="sig-name descname"><span class="pre">GetPropertyCount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.SummaryInformation.GetPropertyCount" title="Permalink to this definition"></a></dt>
+<dd><p>Return the number of summary properties, through
+<code class="xref c c-func docutils literal notranslate"><span class="pre">MsiSummaryInfoGetPropertyCount()</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.SummaryInformation.SetProperty">
+<span class="sig-prename descclassname"><span class="pre">SummaryInformation.</span></span><span class="sig-name descname"><span class="pre">SetProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.SummaryInformation.SetProperty" title="Permalink to this definition"></a></dt>
+<dd><p>Set a property through <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiSummaryInfoSetProperty()</span></code>. <em>field</em> can have the
+same values as in <a class="reference internal" href="#msilib.SummaryInformation.GetProperty" title="msilib.SummaryInformation.GetProperty"><code class="xref py py-meth docutils literal notranslate"><span class="pre">GetProperty()</span></code></a>, <em>value</em> is the new value of the property.
+Possible value types are integer and string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.SummaryInformation.Persist">
+<span class="sig-prename descclassname"><span class="pre">SummaryInformation.</span></span><span class="sig-name descname"><span class="pre">Persist</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.SummaryInformation.Persist" title="Permalink to this definition"></a></dt>
+<dd><p>Write the modified properties to the summary information stream, using
+<code class="xref c c-func docutils literal notranslate"><span class="pre">MsiSummaryInfoPersist()</span></code>.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370409.aspx">MsiSummaryInfoGetProperty</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370488.aspx">MsiSummaryInfoGetPropertyCount</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370491.aspx">MsiSummaryInfoSetProperty</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370490.aspx">MsiSummaryInfoPersist</a></p>
+</div>
+</div>
+<div class="section" id="record-objects">
+<span id="id5"></span><h2>Record Objects<a class="headerlink" href="#record-objects" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Record.GetFieldCount">
+<span class="sig-prename descclassname"><span class="pre">Record.</span></span><span class="sig-name descname"><span class="pre">GetFieldCount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Record.GetFieldCount" title="Permalink to this definition"></a></dt>
+<dd><p>Return the number of fields of the record, through
+<code class="xref c c-func docutils literal notranslate"><span class="pre">MsiRecordGetFieldCount()</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Record.GetInteger">
+<span class="sig-prename descclassname"><span class="pre">Record.</span></span><span class="sig-name descname"><span class="pre">GetInteger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Record.GetInteger" title="Permalink to this definition"></a></dt>
+<dd><p>Return the value of <em>field</em> as an integer where possible.  <em>field</em> must
+be an integer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Record.GetString">
+<span class="sig-prename descclassname"><span class="pre">Record.</span></span><span class="sig-name descname"><span class="pre">GetString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Record.GetString" title="Permalink to this definition"></a></dt>
+<dd><p>Return the value of <em>field</em> as a string where possible.  <em>field</em> must
+be an integer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Record.SetString">
+<span class="sig-prename descclassname"><span class="pre">Record.</span></span><span class="sig-name descname"><span class="pre">SetString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Record.SetString" title="Permalink to this definition"></a></dt>
+<dd><p>Set <em>field</em> to <em>value</em> through <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiRecordSetString()</span></code>. <em>field</em> must be an
+integer; <em>value</em> a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Record.SetStream">
+<span class="sig-prename descclassname"><span class="pre">Record.</span></span><span class="sig-name descname"><span class="pre">SetStream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Record.SetStream" title="Permalink to this definition"></a></dt>
+<dd><p>Set <em>field</em> to the contents of the file named <em>value</em>, through
+<code class="xref c c-func docutils literal notranslate"><span class="pre">MsiRecordSetStream()</span></code>. <em>field</em> must be an integer; <em>value</em> a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Record.SetInteger">
+<span class="sig-prename descclassname"><span class="pre">Record.</span></span><span class="sig-name descname"><span class="pre">SetInteger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Record.SetInteger" title="Permalink to this definition"></a></dt>
+<dd><p>Set <em>field</em> to <em>value</em> through <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiRecordSetInteger()</span></code>. Both <em>field</em> and
+<em>value</em> must be an integer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Record.ClearData">
+<span class="sig-prename descclassname"><span class="pre">Record.</span></span><span class="sig-name descname"><span class="pre">ClearData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Record.ClearData" title="Permalink to this definition"></a></dt>
+<dd><p>Set all fields of the record to 0, through <code class="xref c c-func docutils literal notranslate"><span class="pre">MsiRecordClearData()</span></code>.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370366.aspx">MsiRecordGetFieldCount</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370373.aspx">MsiRecordSetString</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370372.aspx">MsiRecordSetStream</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370371.aspx">MsiRecordSetInteger</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370364.aspx">MsiRecordClearData</a></p>
+</div>
+</div>
+<div class="section" id="errors">
+<span id="msi-errors"></span><h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline"></a></h2>
+<p>All wrappers around MSI functions raise <code class="xref py py-exc docutils literal notranslate"><span class="pre">MSIError</span></code>; the string inside the
+exception will contain more detail.</p>
+</div>
+<div class="section" id="cab-objects">
+<span id="cab"></span><h2>CAB Objects<a class="headerlink" href="#cab-objects" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="msilib.CAB">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">CAB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.CAB" title="Permalink to this definition"></a></dt>
+<dd><p>The class <a class="reference internal" href="#msilib.CAB" title="msilib.CAB"><code class="xref py py-class docutils literal notranslate"><span class="pre">CAB</span></code></a> represents a CAB file. During MSI construction, files
+will be added simultaneously to the <code class="docutils literal notranslate"><span class="pre">Files</span></code> table, and to a CAB file. Then,
+when all files have been added, the CAB file can be written, then added to the
+MSI file.</p>
+<p><em>name</em> is the name of the CAB file in the MSI file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.CAB.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.CAB.append" title="Permalink to this definition"></a></dt>
+<dd><p>Add the file with the pathname <em>full</em> to the CAB file, under the name
+<em>logical</em>.  If there is already a file named <em>logical</em>, a new file name is
+created.</p>
+<p>Return the index of the file in the CAB file, and the new name of the file
+inside the CAB file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.CAB.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.CAB.commit" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a CAB file, add it as a stream to the MSI file, put it into the
+<code class="docutils literal notranslate"><span class="pre">Media</span></code> table, and remove the generated file from the disk.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="directory-objects">
+<span id="msi-directory"></span><h2>Directory Objects<a class="headerlink" href="#directory-objects" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="msilib.Directory">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">Directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">database</span></em>, <em class="sig-param"><span class="pre">cab</span></em>, <em class="sig-param"><span class="pre">basedir</span></em>, <em class="sig-param"><span class="pre">physical</span></em>, <em class="sig-param"><span class="pre">logical</span></em>, <em class="sig-param"><span class="pre">default</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">componentflags</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Directory" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new directory in the Directory table. There is a current component at
+each point in time for the directory, which is either explicitly created through
+<a class="reference internal" href="#msilib.Directory.start_component" title="msilib.Directory.start_component"><code class="xref py py-meth docutils literal notranslate"><span class="pre">start_component()</span></code></a>, or implicitly when files are added for the first time.
+Files are added into the current component, and into the cab file.  To create a
+directory, a base directory object needs to be specified (can be <code class="docutils literal notranslate"><span class="pre">None</span></code>), the
+path to the physical directory, and a logical directory name.  <em>default</em>
+specifies the DefaultDir slot in the directory table. <em>componentflags</em> specifies
+the default flags that new components get.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Directory.start_component">
+<span class="sig-name descname"><span class="pre">start_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Directory.start_component" title="Permalink to this definition"></a></dt>
+<dd><p>Add an entry to the Component table, and make this component the current
+component for this directory. If no component name is given, the directory
+name is used. If no <em>feature</em> is given, the current feature is used. If no
+<em>flags</em> are given, the directory’s default flags are used. If no <em>keyfile</em>
+is given, the KeyPath is left null in the Component table.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Directory.add_file">
+<span class="sig-name descname"><span class="pre">add_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Directory.add_file" title="Permalink to this definition"></a></dt>
+<dd><p>Add a file to the current component of the directory, starting a new one
+if there is no current component. By default, the file name in the source
+and the file table will be identical. If the <em>src</em> file is specified, it
+is interpreted relative to the current directory. Optionally, a <em>version</em>
+and a <em>language</em> can be specified for the entry in the File table.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Directory.glob">
+<span class="sig-name descname"><span class="pre">glob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Directory.glob" title="Permalink to this definition"></a></dt>
+<dd><p>Add a list of files to the current component as specified in the glob
+pattern.  Individual files can be excluded in the <em>exclude</em> list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Directory.remove_pyc">
+<span class="sig-name descname"><span class="pre">remove_pyc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Directory.remove_pyc" title="Permalink to this definition"></a></dt>
+<dd><p>Remove <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> files on uninstall.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368295.aspx">Directory Table</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368596.aspx">File Table</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368007.aspx">Component Table</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368579.aspx">FeatureComponents Table</a></p>
+</div>
+</div>
+<div class="section" id="features">
+<span id="id6"></span><h2>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="msilib.Feature">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">Feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Feature" title="Permalink to this definition"></a></dt>
+<dd><p>Add a new record to the <code class="docutils literal notranslate"><span class="pre">Feature</span></code> table, using the values <em>id</em>, <em>parent.id</em>,
+<em>title</em>, <em>desc</em>, <em>display</em>, <em>level</em>, <em>directory</em>, and <em>attributes</em>. The
+resulting feature object can be passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">start_component()</span></code> method of
+<a class="reference internal" href="#msilib.Directory" title="msilib.Directory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Directory</span></code></a>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Feature.set_current">
+<span class="sig-name descname"><span class="pre">set_current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Feature.set_current" title="Permalink to this definition"></a></dt>
+<dd><p>Make this feature the current feature of <a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a>. New components are
+automatically added to the default feature, unless a feature is explicitly
+specified.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368585.aspx">Feature Table</a></p>
+</div>
+</div>
+<div class="section" id="gui-classes">
+<span id="msi-gui"></span><h2>GUI classes<a class="headerlink" href="#gui-classes" title="Permalink to this headline"></a></h2>
+<p><a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> provides several classes that wrap the GUI tables in an MSI
+database. However, no standard user interface is provided; use
+<a class="reference internal" href="../distutils/apiref.html#module-distutils.command.bdist_msi" title="distutils.command.bdist_msi: Build a binary distribution as a Windows MSI file"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bdist_msi</span></code></a> to create MSI files with a user-interface
+for installing Python packages.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="msilib.Control">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">Control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dlg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Control" title="Permalink to this definition"></a></dt>
+<dd><p>Base class of the dialog controls. <em>dlg</em> is the dialog object the control
+belongs to, and <em>name</em> is the control’s name.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Control.event">
+<span class="sig-name descname"><span class="pre">event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ordering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Control.event" title="Permalink to this definition"></a></dt>
+<dd><p>Make an entry into the <code class="docutils literal notranslate"><span class="pre">ControlEvent</span></code> table for this control.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Control.mapping">
+<span class="sig-name descname"><span class="pre">mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Control.mapping" title="Permalink to this definition"></a></dt>
+<dd><p>Make an entry into the <code class="docutils literal notranslate"><span class="pre">EventMapping</span></code> table for this control.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Control.condition">
+<span class="sig-name descname"><span class="pre">condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Control.condition" title="Permalink to this definition"></a></dt>
+<dd><p>Make an entry into the <code class="docutils literal notranslate"><span class="pre">ControlCondition</span></code> table for this control.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="msilib.RadioButtonGroup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">RadioButtonGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dlg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.RadioButtonGroup" title="Permalink to this definition"></a></dt>
+<dd><p>Create a radio button control named <em>name</em>. <em>property</em> is the installer property
+that gets set when a radio button is selected.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.RadioButtonGroup.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.RadioButtonGroup.add" title="Permalink to this definition"></a></dt>
+<dd><p>Add a radio button named <em>name</em> to the group, at the coordinates <em>x</em>, <em>y</em>,
+<em>width</em>, <em>height</em>, and with the label <em>text</em>. If <em>value</em> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, it
+defaults to <em>name</em>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="msilib.Dialog">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">Dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Dialog" title="Permalink to this definition"></a></dt>
+<dd><p>Return a new <a class="reference internal" href="#msilib.Dialog" title="msilib.Dialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dialog</span></code></a> object. An entry in the <code class="docutils literal notranslate"><span class="pre">Dialog</span></code> table is made,
+with the specified coordinates, dialog attributes, title, name of the first,
+default, and cancel controls.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Dialog.control">
+<span class="sig-name descname"><span class="pre">control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_next</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">help</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Dialog.control" title="Permalink to this definition"></a></dt>
+<dd><p>Return a new <a class="reference internal" href="#msilib.Control" title="msilib.Control"><code class="xref py py-class docutils literal notranslate"><span class="pre">Control</span></code></a> object. An entry in the <code class="docutils literal notranslate"><span class="pre">Control</span></code> table is
+made with the specified parameters.</p>
+<p>This is a generic method; for specific types, specialized methods are
+provided.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Dialog.text">
+<span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Dialog.text" title="Permalink to this definition"></a></dt>
+<dd><p>Add and return a <code class="docutils literal notranslate"><span class="pre">Text</span></code> control.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Dialog.bitmap">
+<span class="sig-name descname"><span class="pre">bitmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Dialog.bitmap" title="Permalink to this definition"></a></dt>
+<dd><p>Add and return a <code class="docutils literal notranslate"><span class="pre">Bitmap</span></code> control.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Dialog.line">
+<span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Dialog.line" title="Permalink to this definition"></a></dt>
+<dd><p>Add and return a <code class="docutils literal notranslate"><span class="pre">Line</span></code> control.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Dialog.pushbutton">
+<span class="sig-name descname"><span class="pre">pushbutton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Dialog.pushbutton" title="Permalink to this definition"></a></dt>
+<dd><p>Add and return a <code class="docutils literal notranslate"><span class="pre">PushButton</span></code> control.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Dialog.radiogroup">
+<span class="sig-name descname"><span class="pre">radiogroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Dialog.radiogroup" title="Permalink to this definition"></a></dt>
+<dd><p>Add and return a <code class="docutils literal notranslate"><span class="pre">RadioButtonGroup</span></code> control.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msilib.Dialog.checkbox">
+<span class="sig-name descname"><span class="pre">checkbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Dialog.checkbox" title="Permalink to this definition"></a></dt>
+<dd><p>Add and return a <code class="docutils literal notranslate"><span class="pre">CheckBox</span></code> control.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368286.aspx">Dialog Table</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368044.aspx">Control Table</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368039.aspx">Control Types</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368035.aspx">ControlCondition Table</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368037.aspx">ControlEvent Table</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa368559.aspx">EventMapping Table</a>
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa370962.aspx">RadioButton Table</a></p>
+</div>
+</div>
+<div class="section" id="precomputed-tables">
+<span id="msi-tables"></span><h2>Precomputed tables<a class="headerlink" href="#precomputed-tables" title="Permalink to this headline"></a></h2>
+<p><a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> provides a few subpackages that contain only schema and table
+definitions. Currently, these definitions are based on MSI version 2.0.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="msilib.schema">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">schema</span></span><a class="headerlink" href="#msilib.schema" title="Permalink to this definition"></a></dt>
+<dd><p>This is the standard MSI schema for MSI 2.0, with the <em>tables</em> variable
+providing a list of table definitions, and <em>_Validation_records</em> providing the
+data for MSI validation.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="msilib.sequence">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">sequence</span></span><a class="headerlink" href="#msilib.sequence" title="Permalink to this definition"></a></dt>
+<dd><p>This module contains table contents for the standard sequence tables:
+<em>AdminExecuteSequence</em>, <em>AdminUISequence</em>, <em>AdvtExecuteSequence</em>,
+<em>InstallExecuteSequence</em>, and <em>InstallUISequence</em>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="msilib.text">
+<span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">text</span></span><a class="headerlink" href="#msilib.text" title="Permalink to this definition"></a></dt>
+<dd><p>This module contains definitions for the UIText and ActionText tables, for the
+standard installer actions.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="windows.html" class="btn btn-neutral float-left" title="MS Windows Specific Services" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="msvcrt.html" class="btn btn-neutral float-right" title="msvcrt — Useful routines from the MS VC++ runtime" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>__main__ — Top-level code environment &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="warnings — Warning control" href="warnings.html" />
+    <link rel="prev" title="builtins — Built-in objects" href="builtins.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/__main__.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Python Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Built-in Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdtypes.html">Built-in Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Built-in Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text Processing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">Binary Data Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric.html">Numeric and Mathematical Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">File and Directory Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archiving.html">Data Compression and Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileformats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">Cryptographic Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allos.html">Generic Operating System Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concurrency.html">Concurrent Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">Networking and Interprocess Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netdata.html">Internet Data Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markup.html">Structured Markup Processing Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internet.html">Internet Protocols and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mm.html">Multimedia Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Program Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tk.html">Graphical User Interfaces with Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging and Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">Software Packaging and Distribution</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="python.html">Python Runtime Services</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sys.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sys</span></code> — System-specific parameters and functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sysconfig.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code> — Provide access to Python’s configuration information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtins.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">builtins</span></code> — Built-in objects</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code> — Top-level code environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#name-main"><code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#main-py-in-python-packages"><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> in Python Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-main"><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">__main__</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="warnings.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code> — Warning control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataclasses.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dataclasses</span></code> — Data Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contextlib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">contextlib</span></code> — Utilities for <code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code>-statement contexts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abc.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code> — Abstract Base Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atexit.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code> — Exit handlers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="traceback.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">traceback</span></code> — Print or retrieve a stack traceback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="__future__.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">__future__</span></code> — Future statement definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gc.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gc</span></code> — Garbage Collector interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inspect.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">inspect</span></code> — Inspect live objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="site.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code> — Site-specific configuration hook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="custominterp.html">Custom Python Interpreters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Importing Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Python Language Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">MS Windows Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix.html">Unix Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="superseded.html">Superseded Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undoc.html">Undocumented Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_warnings.html">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">The Python Standard Library</a> &raquo;</li>
+          <li><a href="python.html">Python Runtime Services</a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code> — Top-level code environment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/__main__.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-__main__">
+<span id="main-top-level-code-environment"></span><h1><a class="reference internal" href="#module-__main__" title="__main__: The environment where top-level code is run. Covers command-line interfaces, import-time behavior, and ``__name__ == '__main__'``."><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code></a> — Top-level code environment<a class="headerlink" href="#module-__main__" title="Permalink to this headline"></a></h1>
+<hr class="docutils" />
+<p>In Python, the special name <code class="docutils literal notranslate"><span class="pre">__main__</span></code> is used for two important constructs:</p>
+<ol class="arabic simple">
+<li><p>the name of the top-level environment of the program, which can be
+checked using the <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> expression; and</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> file in Python packages.</p></li>
+</ol>
+<p>Both of these mechanisms are related to Python modules; how users interact with
+them and how they interact with each other.  They are explained in detail
+below.  If you’re new to Python modules, see the tutorial section
+<a class="reference internal" href="../tutorial/modules.html#tut-modules"><span class="std std-ref">Modules</span></a> for an introduction.</p>
+<div class="section" id="name-main">
+<span id="name-equals-main"></span><h2><code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code><a class="headerlink" href="#name-main" title="Permalink to this headline"></a></h2>
+<p>When a Python module or package is imported, <code class="docutils literal notranslate"><span class="pre">__name__</span></code> is set to the
+module’s name.  Usually, this is the name of the Python file itself without the
+<code class="docutils literal notranslate"><span class="pre">.py</span></code> extension:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">configparser</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">configparser</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="go">&#39;configparser&#39;</span>
+</pre></div>
+</div>
+<p>If the file is part of a package, <code class="docutils literal notranslate"><span class="pre">__name__</span></code> will also include the parent
+package’s path:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">process</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">process</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="go">&#39;concurrent.futures.process&#39;</span>
+</pre></div>
+</div>
+<p>However, if the module is executed in the top-level code environment,
+its <code class="docutils literal notranslate"><span class="pre">__name__</span></code> is set to the string <code class="docutils literal notranslate"><span class="pre">'__main__'</span></code>.</p>
+<div class="section" id="what-is-the-top-level-code-environment">
+<h3>What is the “top-level code environment”?<a class="headerlink" href="#what-is-the-top-level-code-environment" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">__main__</span></code> is the name of the environment where top-level code is run.
+“Top-level code” is the first user-specified Python module that starts running.
+It’s “top-level” because it imports all other modules that the program needs.
+Sometimes “top-level code” is called an <em>entry point</em> to the application.</p>
+<p>The top-level code environment can be:</p>
+<ul>
+<li><p>the scope of an interactive prompt:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="vm">__name__</span>
+<span class="go">&#39;__main__&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>the Python module passed to the Python interpreter as a file argument:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 helloworld.py
+<span class="go">Hello, world!</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>the Python module or package passed to the Python interpreter with the
+<a class="reference internal" href="../using/cmdline.html#cmdoption-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">-m</span></code></a> argument:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 -m tarfile
+<span class="go">usage: tarfile.py [-h] [-v] (...)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Python code read by the Python interpreter from standard input:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span> <span class="s2">&quot;import this&quot;</span> <span class="p">|</span> python3
+<span class="go">The Zen of Python, by Tim Peters</span>
+
+<span class="go">Beautiful is better than ugly.</span>
+<span class="go">Explicit is better than implicit.</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Python code passed to the Python interpreter with the <a class="reference internal" href="../using/cmdline.html#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a> argument:</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 -c <span class="s2">&quot;import this&quot;</span>
+<span class="go">The Zen of Python, by Tim Peters</span>
+
+<span class="go">Beautiful is better than ugly.</span>
+<span class="go">Explicit is better than implicit.</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>In each of these situations, the top-level module’s <code class="docutils literal notranslate"><span class="pre">__name__</span></code> is set to
+<code class="docutils literal notranslate"><span class="pre">'__main__'</span></code>.</p>
+<p>As a result, a module can discover whether or not it is running in the
+top-level environment by checking its own <code class="docutils literal notranslate"><span class="pre">__name__</span></code>, which allows a common
+idiom for conditionally executing code when the module is not initialized from
+an import statement:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># Execute when the module is not initialized from an import statement.</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For a more detailed look at how <code class="docutils literal notranslate"><span class="pre">__name__</span></code> is set in all situations, see
+the tutorial section <a class="reference internal" href="../tutorial/modules.html#tut-modules"><span class="std std-ref">Modules</span></a>.</p>
+</div>
+</div>
+<div class="section" id="idiomatic-usage">
+<h3>Idiomatic Usage<a class="headerlink" href="#idiomatic-usage" title="Permalink to this headline"></a></h3>
+<p>Some modules contain code that is intended for script use only, like parsing
+command-line arguments or fetching data from standard input.  When a module
+like this were to be imported from a different module, for example to unit test
+it, the script code would unintentionally execute as well.</p>
+<p>This is where using the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> code block comes in
+handy. Code within this block won’t run unless the module is executed in the
+top-level environment.</p>
+<p>Putting as few statements as possible in the block below <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name___</span> <span class="pre">==</span>
+<span class="pre">'__main__'</span></code> can improve code clarity and correctness. Most often, a function
+named <code class="docutils literal notranslate"><span class="pre">main</span></code> encapsulates the program’s primary behavior:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># echo.py</span>
+
+<span class="kn">import</span> <span class="nn">shlex</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="n">phrase</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+   <span class="sd">&quot;&quot;&quot;A dummy wrapper around print.&quot;&quot;&quot;</span>
+   <span class="c1"># for demonstration purposes, you can imagine that there is some</span>
+   <span class="c1"># valuable and reusable logic inside this function</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Echo the input arguments to standard output&quot;&quot;&quot;</span>
+    <span class="n">phrase</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">echo</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>  <span class="c1"># next section explains the use of sys.exit</span>
+</pre></div>
+</div>
+<p>Note that if the module didn’t encapsulate code inside the <code class="docutils literal notranslate"><span class="pre">main</span></code> function
+but instead put it directly within the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> block,
+the <code class="docutils literal notranslate"><span class="pre">phrase</span></code> variable would be global to the entire module.  This is
+error-prone as other functions within the module could be unintentionally using
+the global variable instead of a local name.  A <code class="docutils literal notranslate"><span class="pre">main</span></code> function solves this
+problem.</p>
+<p>Using a <code class="docutils literal notranslate"><span class="pre">main</span></code> function has the added benefit of the <code class="docutils literal notranslate"><span class="pre">echo</span></code> function itself
+being isolated and importable elsewhere. When <code class="docutils literal notranslate"><span class="pre">echo.py</span></code> is imported, the
+<code class="docutils literal notranslate"><span class="pre">echo</span></code> and <code class="docutils literal notranslate"><span class="pre">main</span></code> functions will be defined, but neither of them will be
+called, because <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">!=</span> <span class="pre">'__main__'</span></code>.</p>
+</div>
+<div class="section" id="packaging-considerations">
+<h3>Packaging Considerations<a class="headerlink" href="#packaging-considerations" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">main</span></code> functions are often used to create command-line tools by specifying
+them as entry points for console scripts.  When this is done,
+<a class="reference external" href="https://pip.pypa.io/">pip</a> inserts the function call into a template script,
+where the return value of <code class="docutils literal notranslate"><span class="pre">main</span></code> is passed into <a class="reference internal" href="sys.html#sys.exit" title="sys.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exit()</span></code></a>.
+For example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Since the call to <code class="docutils literal notranslate"><span class="pre">main</span></code> is wrapped in <a class="reference internal" href="sys.html#sys.exit" title="sys.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exit()</span></code></a>, the expectation is
+that your function will return some value acceptable as an input to
+<a class="reference internal" href="sys.html#sys.exit" title="sys.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exit()</span></code></a>; typically, an integer or <code class="docutils literal notranslate"><span class="pre">None</span></code> (which is implicitly
+returned if your function does not have a return statement).</p>
+<p>By proactively following this convention ourselves, our module will have the
+same behavior when run directly (i.e. <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">echo.py</span></code>) as it will have if
+we later package it as a console script entry-point in a pip-installable
+package.</p>
+<p>In particular, be careful about returning strings from your <code class="docutils literal notranslate"><span class="pre">main</span></code> function.
+<a class="reference internal" href="sys.html#sys.exit" title="sys.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exit()</span></code></a> will interpret a string argument as a failure message, so
+your program will have an exit code of <code class="docutils literal notranslate"><span class="pre">1</span></code>, indicating failure, and the
+string will be written to <a class="reference internal" href="sys.html#sys.stderr" title="sys.stderr"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.stderr</span></code></a>.  The <code class="docutils literal notranslate"><span class="pre">echo.py</span></code> example from
+earlier exemplifies using the <code class="docutils literal notranslate"><span class="pre">sys.exit(main())</span></code> convention.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://packaging.python.org/">Python Packaging User Guide</a>
+contains a collection of tutorials and references on how to distribute and
+install Python packages with modern tools.</p>
+</div>
+</div>
+</div>
+<div class="section" id="main-py-in-python-packages">
+<h2><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> in Python Packages<a class="headerlink" href="#main-py-in-python-packages" title="Permalink to this headline"></a></h2>
+<p>If you are not familiar with Python packages, see section <a class="reference internal" href="../tutorial/modules.html#tut-packages"><span class="std std-ref">Packages</span></a>
+of the tutorial.  Most commonly, the <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> file is used to provide
+a command-line interface for a package. Consider the following hypothetical
+package, “bandclass”:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>bandclass
+  ├── __init__.py
+  ├── __main__.py
+  └── student.py
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> will be executed when the package itself is invoked
+directly from the command line using the <a class="reference internal" href="../using/cmdline.html#cmdoption-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">-m</span></code></a> flag. For example:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 -m bandclass
+</pre></div>
+</div>
+<p>This command will cause <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> to run. How you utilize this mechanism
+will depend on the nature of the package you are writing, but in this
+hypothetical case, it might make sense to allow the teacher to search for
+students:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bandclass/__main__.py</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">.student</span> <span class="kn">import</span> <span class="n">search_students</span>
+
+<span class="n">student_name</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found student: </span><span class="si">{</span><span class="n">search_students</span><span class="p">(</span><span class="n">student_name</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.student</span> <span class="pre">import</span> <span class="pre">search_students</span></code> is an example of a relative
+import.  This import style must be used when referencing modules within a
+package.  For more details, see <a class="reference internal" href="../tutorial/modules.html#intra-package-references"><span class="std std-ref">Intra-package References</span></a> in the
+<a class="reference internal" href="../tutorial/modules.html#tut-modules"><span class="std std-ref">Modules</span></a> section of the tutorial.</p>
+<div class="section" id="id1">
+<h3>Idiomatic Usage<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>The contents of <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> typically isn’t fenced with
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> blocks.  Instead, those files are kept short,
+functions to execute from other modules.  Those other modules can then be
+easily unit-tested and are properly reusable.</p>
+<p>If used, an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code> block will still work as expected
+for a <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> file within a package, because its <code class="docutils literal notranslate"><span class="pre">__name__</span></code>
+attribute will include the package’s path if imported:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">asyncio.__main__</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asyncio</span><span class="o">.</span><span class="n">__main__</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="go">&#39;asyncio.__main__&#39;</span>
+</pre></div>
+</div>
+<p>This won’t work for <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> files in the root directory of a .zip file
+though.  Hence, for consistency, minimal <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> like the <a class="reference internal" href="venv.html#module-venv" title="venv: Creation of virtual environments."><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code></a>
+one mentioned above are preferred.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See <a class="reference internal" href="venv.html#module-venv" title="venv: Creation of virtual environments."><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code></a> for an example of a package with a minimal <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code>
+in the standard library. It doesn’t contain a <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code>
+block. You can invoke it with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">[directory]</span></code>.</p>
+<p>See <a class="reference internal" href="runpy.html#module-runpy" title="runpy: Locate and run Python modules without importing them first."><code class="xref py py-mod docutils literal notranslate"><span class="pre">runpy</span></code></a> for more details on the <a class="reference internal" href="../using/cmdline.html#cmdoption-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">-m</span></code></a> flag to the
+interpreter executable.</p>
+<p>See <a class="reference internal" href="zipapp.html#module-zipapp" title="zipapp: Manage executable Python zip archives"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipapp</span></code></a> for how to run applications packaged as <em>.zip</em> files. In
+this case Python looks for a <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> file in the root directory of
+the archive.</p>
+</div>
+</div>
+</div>
+<div class="section" id="import-main">
+<h2><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">__main__</span></code><a class="headerlink" href="#import-main" title="Permalink to this headline"></a></h2>
+<p>Regardless of which module a Python program was started with, other modules
+running within that same program can import the top-level environment’s scope
+(<a class="reference internal" href="../glossary.html#term-namespace"><span class="xref std std-term">namespace</span></a>) by importing the <code class="docutils literal notranslate"><span class="pre">__main__</span></code> module.  This doesn’t import
+a <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> file but rather whichever module that received the special
+name <code class="docutils literal notranslate"><span class="pre">'__main__'</span></code>.</p>
+<p>Here is an example module that consumes the <code class="docutils literal notranslate"><span class="pre">__main__</span></code> namespace:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># namely.py</span>
+
+<span class="kn">import</span> <span class="nn">__main__</span>
+
+<span class="k">def</span> <span class="nf">did_user_define_their_name</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;my_name&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__main__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">print_user_name</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">did_user_define_their_name</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Define the variable `my_name`!&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;__file__&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__main__</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">__main__</span><span class="o">.</span><span class="n">my_name</span><span class="p">,</span> <span class="s2">&quot;found in file&quot;</span><span class="p">,</span> <span class="n">__main__</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">__main__</span><span class="o">.</span><span class="n">my_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example usage of this module could be as follows:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start.py</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">namely</span> <span class="kn">import</span> <span class="n">print_user_name</span>
+
+<span class="c1"># my_name = &quot;Dinsdale&quot;</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">print_user_name</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ve</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Now, if we started our program, the result would look like this:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 start.py
+<span class="go">Define the variable `my_name`!</span>
+</pre></div>
+</div>
+<p>The exit code of the program would be 1, indicating an error. Uncommenting the
+line with <code class="docutils literal notranslate"><span class="pre">my_name</span> <span class="pre">=</span> <span class="pre">&quot;Dinsdale&quot;</span></code> fixes the program and now it exits with
+status code 0, indicating success:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3 start.py
+<span class="go">Dinsdale found in file /path/to/start.py</span>
+</pre></div>
+</div>
+<p>Note that importing <code class="docutils literal notranslate"><span class="pre">__main__</span></code> doesn’t cause any issues with unintentionally
+running top-level code meant for script use which is put in the
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code> block of the <code class="docutils literal notranslate"><span class="pre">start</span></code> module. Why does this work?</p>
+<p>Python inserts an empty <code class="docutils literal notranslate"><span class="pre">__main__</span></code> module in <a class="reference internal" href="sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a> at
+interpreter startup, and populates it by running top-level code. In our example
+this is the <code class="docutils literal notranslate"><span class="pre">start</span></code> module which runs line by line and imports <code class="docutils literal notranslate"><span class="pre">namely</span></code>.
+In turn, <code class="docutils literal notranslate"><span class="pre">namely</span></code> imports <code class="docutils literal notranslate"><span class="pre">__main__</span></code> (which is really <code class="docutils literal notranslate"><span class="pre">start</span></code>). That’s an
+import cycle! Fortunately, since the partially populated <code class="docutils literal notranslate"><span class="pre">__main__</span></code>
+module is present in <a class="reference internal" href="sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a>, Python passes that to <code class="docutils literal notranslate"><span class="pre">namely</span></code>.
+See <a class="reference internal" href="../reference/import.html#import-dunder-main"><span class="std std-ref">Special considerations for __main__</span></a> in the
+import system’s reference for details on how this works.</p>
+<p>The Python REPL is another example of a “top-level environment”, so anything
+defined in the REPL becomes part of the <code class="docutils literal notranslate"><span class="pre">__main__</span></code> scope:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">namely</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namely</span><span class="o">.</span><span class="n">did_user_define_their_name</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namely</span><span class="o">.</span><span class="n">print_user_name</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">Define the variable `my_name`!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_name</span> <span class="o">=</span> <span class="s1">&#39;Jabberwocky&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namely</span><span class="o">.</span><span class="n">did_user_define_their_name</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namely</span><span class="o">.</span><span class="n">print_user_name</span><span class="p">()</span>
+<span class="go">Jabberwocky</span>
+</pre></div>
+</div>
+<p>Note that in this case the <code class="docutils literal notranslate"><span class="pre">__main__</span></code> scope doesn’t contain a <code class="docutils literal notranslate"><span class="pre">__file__</span></code>
+attribute as it’s interactive.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">__main__</span></code> scope is used in the implementation of <a class="reference internal" href="pdb.html#module-pdb" title="pdb: The Python debugger for interactive interpreters."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pdb</span></code></a> and
+<a class="reference internal" href="rlcompleter.html#module-rlcompleter" title="rlcompleter: Python identifier completion, suitable for the GNU readline library."><code class="xref py py-mod docutils literal notranslate"><span class="pre">rlcompleter</span></code></a>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="builtins.html" class="btn btn-neutral float-left" title="builtins — Built-in objects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="warnings.html" class="btn btn-neutral float-right" title="warnings — Warning control" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

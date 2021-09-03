@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>xml.sax — Support for SAX2 parsers &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="xml.sax.handler — Base classes for SAX handlers" href="xml.sax.handler.html" />
+    <link rel="prev" title="xml.dom.pulldom — Support for building partial DOM trees" href="xml.dom.pulldom.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/xml.sax.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Python Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Built-in Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdtypes.html">Built-in Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Built-in Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text Processing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">Binary Data Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric.html">Numeric and Mathematical Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">File and Directory Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archiving.html">Data Compression and Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileformats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">Cryptographic Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allos.html">Generic Operating System Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concurrency.html">Concurrent Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">Networking and Interprocess Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netdata.html">Internet Data Handling</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="markup.html">Structured Markup Processing Tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="html.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">html</span></code> — HyperText Markup Language support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="html.parser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">html.parser</span></code> — Simple HTML and XHTML parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="html.entities.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">html.entities</span></code> — Definitions of HTML general entities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xml.html">XML Processing Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xml.etree.elementtree.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.etree.ElementTree</span></code> — The ElementTree XML API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xml.dom.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.dom</span></code> — The Document Object Model API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xml.dom.minidom.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.dom.minidom</span></code> — Minimal DOM implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xml.dom.pulldom.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.dom.pulldom</span></code> — Support for building partial DOM trees</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax</span></code> — Support for SAX2 parsers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#saxexception-objects">SAXException Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="xml.sax.handler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.handler</span></code> — Base classes for SAX handlers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xml.sax.utils.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.saxutils</span></code> — SAX Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xml.sax.reader.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.xmlreader</span></code> — Interface for XML parsers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyexpat.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.parsers.expat</span></code> — Fast XML parsing using Expat</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="internet.html">Internet Protocols and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mm.html">Multimedia Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Program Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tk.html">Graphical User Interfaces with Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging and Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">Software Packaging and Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python Runtime Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custominterp.html">Custom Python Interpreters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Importing Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Python Language Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">MS Windows Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix.html">Unix Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="superseded.html">Superseded Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undoc.html">Undocumented Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_warnings.html">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">The Python Standard Library</a> &raquo;</li>
+          <li><a href="markup.html">Structured Markup Processing Tools</a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax</span></code> — Support for SAX2 parsers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/xml.sax.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-xml.sax">
+<span id="xml-sax-support-for-sax2-parsers"></span><h1><a class="reference internal" href="#module-xml.sax" title="xml.sax: Package containing SAX2 base classes and convenience functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax</span></code></a> — Support for SAX2 parsers<a class="headerlink" href="#module-xml.sax" title="Permalink to this headline"></a></h1>
+<p><strong>Source code:</strong> <a href="#id1"><span class="problematic" id="id2">:source:`Lib/xml/sax/__init__.py`</span></a></p>
+<hr class="docutils" />
+<p>The <a class="reference internal" href="#module-xml.sax" title="xml.sax: Package containing SAX2 base classes and convenience functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax</span></code></a> package provides a number of modules which implement the
+Simple API for XML (SAX) interface for Python.  The package itself provides the
+SAX exceptions and the convenience functions which will be most used by users of
+the SAX API.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <a class="reference internal" href="#module-xml.sax" title="xml.sax: Package containing SAX2 base classes and convenience functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax</span></code></a> module is not secure against maliciously
+constructed data.  If you need to parse untrusted or unauthenticated data see
+<a class="reference internal" href="xml.html#xml-vulnerabilities"><span class="std std-ref">XML vulnerabilities</span></a>.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.7.1: </span>The SAX parser no longer processes general external entities by default
+to increase security. Before, the parser created network connections
+to fetch remote files or loaded local files from the file
+system for DTD and entities. The feature can be enabled again with method
+<a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.XMLReader.setFeature" title="xml.sax.xmlreader.XMLReader.setFeature"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setFeature()</span></code></a> on the parser object
+and argument <a class="reference internal" href="xml.sax.handler.html#xml.sax.handler.feature_external_ges" title="xml.sax.handler.feature_external_ges"><code class="xref py py-data docutils literal notranslate"><span class="pre">feature_external_ges</span></code></a>.</p>
+</div>
+<p>The convenience functions are:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="xml.sax.make_parser">
+<span class="sig-prename descclassname"><span class="pre">xml.sax.</span></span><span class="sig-name descname"><span class="pre">make_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.make_parser" title="Permalink to this definition"></a></dt>
+<dd><p>Create and return a SAX <a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.XMLReader" title="xml.sax.xmlreader.XMLReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">XMLReader</span></code></a> object.  The
+first parser found will
+be used.  If <em>parser_list</em> is provided, it must be an iterable of strings which
+name modules that have a function named <code class="xref py py-func docutils literal notranslate"><span class="pre">create_parser()</span></code>.  Modules listed
+in <em>parser_list</em> will be used before modules in the default list of parsers.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.8: </span>The <em>parser_list</em> argument can be any iterable, not just a list.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="xml.sax.parse">
+<span class="sig-prename descclassname"><span class="pre">xml.sax.</span></span><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_or_stream</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_handler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">handler.ErrorHandler()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.parse" title="Permalink to this definition"></a></dt>
+<dd><p>Create a SAX parser and use it to parse a document.  The document, passed in as
+<em>filename_or_stream</em>, can be a filename or a file object.  The <em>handler</em>
+parameter needs to be a SAX <a class="reference internal" href="xml.sax.handler.html#xml.sax.handler.ContentHandler" title="xml.sax.handler.ContentHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContentHandler</span></code></a> instance.  If
+<em>error_handler</em> is given, it must be a SAX <a class="reference internal" href="xml.sax.handler.html#xml.sax.handler.ErrorHandler" title="xml.sax.handler.ErrorHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorHandler</span></code></a>
+instance; if
+omitted,  <a class="reference internal" href="#xml.sax.SAXParseException" title="xml.sax.SAXParseException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SAXParseException</span></code></a> will be raised on all errors.  There is no
+return value; all work must be done by the <em>handler</em> passed in.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="xml.sax.parseString">
+<span class="sig-prename descclassname"><span class="pre">xml.sax.</span></span><span class="sig-name descname"><span class="pre">parseString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_handler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">handler.ErrorHandler()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.parseString" title="Permalink to this definition"></a></dt>
+<dd><p>Similar to <a class="reference internal" href="#xml.sax.parse" title="xml.sax.parse"><code class="xref py py-func docutils literal notranslate"><span class="pre">parse()</span></code></a>, but parses from a buffer <em>string</em> received as a
+parameter.  <em>string</em> must be a <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> instance or a
+<a class="reference internal" href="../glossary.html#term-bytes-like-object"><span class="xref std std-term">bytes-like object</span></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.5: </span>Added support of <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> instances.</p>
+</div>
+</dd></dl>
+
+<p>A typical SAX application uses three kinds of objects: readers, handlers and
+input sources.  “Reader” in this context is another term for parser, i.e. some
+piece of code that reads the bytes or characters from the input source, and
+produces a sequence of events. The events then get distributed to the handler
+objects, i.e. the reader invokes a method on the handler.  A SAX application
+must therefore obtain a reader object, create or open the input sources, create
+the handlers, and connect these objects all together.  As the final step of
+preparation, the reader is called to parse the input. During parsing, methods on
+the handler objects are called based on structural and syntactic events from the
+input data.</p>
+<p>For these objects, only the interfaces are relevant; they are normally not
+instantiated by the application itself.  Since Python does not have an explicit
+notion of interface, they are formally introduced as classes, but applications
+may use implementations which do not inherit from the provided classes.  The
+<a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.InputSource" title="xml.sax.xmlreader.InputSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputSource</span></code></a>, <a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.Locator" title="xml.sax.xmlreader.Locator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Locator</span></code></a>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Attributes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">AttributesNS</span></code>,
+and <a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.XMLReader" title="xml.sax.xmlreader.XMLReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">XMLReader</span></code></a> interfaces are defined in the
+module <a class="reference internal" href="xml.sax.reader.html#module-xml.sax.xmlreader" title="xml.sax.xmlreader: Interface which SAX-compliant XML parsers must implement."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.xmlreader</span></code></a>.  The handler interfaces are defined in
+<a class="reference internal" href="xml.sax.handler.html#module-xml.sax.handler" title="xml.sax.handler: Base classes for SAX event handlers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.handler</span></code></a>.  For convenience,
+<a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.InputSource" title="xml.sax.xmlreader.InputSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputSource</span></code></a> (which is often
+instantiated directly) and the handler classes are also available from
+<a class="reference internal" href="#module-xml.sax" title="xml.sax: Package containing SAX2 base classes and convenience functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax</span></code></a>.  These interfaces are described below.</p>
+<p>In addition to these classes, <a class="reference internal" href="#module-xml.sax" title="xml.sax: Package containing SAX2 base classes and convenience functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax</span></code></a> provides the following exception
+classes.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="xml.sax.SAXException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">xml.sax.</span></span><span class="sig-name descname"><span class="pre">SAXException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.SAXException" title="Permalink to this definition"></a></dt>
+<dd><p>Encapsulate an XML error or warning.  This class can contain basic error or
+warning information from either the XML parser or the application: it can be
+subclassed to provide additional functionality or to add localization.  Note
+that although the handlers defined in the
+<a class="reference internal" href="xml.sax.handler.html#xml.sax.handler.ErrorHandler" title="xml.sax.handler.ErrorHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorHandler</span></code></a> interface
+receive instances of this exception, it is not required to actually raise the
+exception — it is also useful as a container for information.</p>
+<p>When instantiated, <em>msg</em> should be a human-readable description of the error.
+The optional <em>exception</em> parameter, if given, should be <code class="docutils literal notranslate"><span class="pre">None</span></code> or an exception
+that was caught by the parsing code and is being passed along as information.</p>
+<p>This is the base class for the other SAX exception classes.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="xml.sax.SAXParseException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">xml.sax.</span></span><span class="sig-name descname"><span class="pre">SAXParseException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.SAXParseException" title="Permalink to this definition"></a></dt>
+<dd><p>Subclass of <a class="reference internal" href="#xml.sax.SAXException" title="xml.sax.SAXException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SAXException</span></code></a> raised on parse errors. Instances of this
+class are passed to the methods of the SAX
+<a class="reference internal" href="xml.sax.handler.html#xml.sax.handler.ErrorHandler" title="xml.sax.handler.ErrorHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorHandler</span></code></a> interface to provide information
+about the parse error.  This class supports the SAX
+<a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.Locator" title="xml.sax.xmlreader.Locator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Locator</span></code></a> interface as well as the
+<a class="reference internal" href="#xml.sax.SAXException" title="xml.sax.SAXException"><code class="xref py py-class docutils literal notranslate"><span class="pre">SAXException</span></code></a> interface.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="xml.sax.SAXNotRecognizedException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">xml.sax.</span></span><span class="sig-name descname"><span class="pre">SAXNotRecognizedException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.SAXNotRecognizedException" title="Permalink to this definition"></a></dt>
+<dd><p>Subclass of <a class="reference internal" href="#xml.sax.SAXException" title="xml.sax.SAXException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SAXException</span></code></a> raised when a SAX
+<a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.XMLReader" title="xml.sax.xmlreader.XMLReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">XMLReader</span></code></a> is
+confronted with an unrecognized feature or property.  SAX applications and
+extensions may use this class for similar purposes.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="xml.sax.SAXNotSupportedException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">xml.sax.</span></span><span class="sig-name descname"><span class="pre">SAXNotSupportedException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.SAXNotSupportedException" title="Permalink to this definition"></a></dt>
+<dd><p>Subclass of <a class="reference internal" href="#xml.sax.SAXException" title="xml.sax.SAXException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SAXException</span></code></a> raised when a SAX
+<a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.XMLReader" title="xml.sax.xmlreader.XMLReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">XMLReader</span></code></a> is asked to
+enable a feature that is not supported, or to set a property to a value that the
+implementation does not support.  SAX applications and extensions may use this
+class for similar purposes.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="http://www.saxproject.org/">SAX: The Simple API for XML</a></dt><dd><p>This site is the focal point for the definition of the SAX API.  It provides a
+Java implementation and online documentation.  Links to implementations and
+historical information are also available.</p>
+</dd>
+<dt>Module <a class="reference internal" href="xml.sax.handler.html#module-xml.sax.handler" title="xml.sax.handler: Base classes for SAX event handlers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.handler</span></code></a></dt><dd><p>Definitions of the interfaces for application-provided objects.</p>
+</dd>
+<dt>Module <a class="reference internal" href="xml.sax.utils.html#module-xml.sax.saxutils" title="xml.sax.saxutils: Convenience functions and classes for use with SAX."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.saxutils</span></code></a></dt><dd><p>Convenience functions for use in SAX applications.</p>
+</dd>
+<dt>Module <a class="reference internal" href="xml.sax.reader.html#module-xml.sax.xmlreader" title="xml.sax.xmlreader: Interface which SAX-compliant XML parsers must implement."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.xmlreader</span></code></a></dt><dd><p>Definitions of the interfaces for parser-provided objects.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="saxexception-objects">
+<span id="sax-exception-objects"></span><h2>SAXException Objects<a class="headerlink" href="#saxexception-objects" title="Permalink to this headline"></a></h2>
+<p>The <a class="reference internal" href="#xml.sax.SAXException" title="xml.sax.SAXException"><code class="xref py py-class docutils literal notranslate"><span class="pre">SAXException</span></code></a> exception class supports the following methods:</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="xml.sax.SAXException.getMessage">
+<span class="sig-prename descclassname"><span class="pre">SAXException.</span></span><span class="sig-name descname"><span class="pre">getMessage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.SAXException.getMessage" title="Permalink to this definition"></a></dt>
+<dd><p>Return a human-readable message describing the error condition.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="xml.sax.SAXException.getException">
+<span class="sig-prename descclassname"><span class="pre">SAXException.</span></span><span class="sig-name descname"><span class="pre">getException</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.SAXException.getException" title="Permalink to this definition"></a></dt>
+<dd><p>Return an encapsulated exception object, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="xml.dom.pulldom.html" class="btn btn-neutral float-left" title="xml.dom.pulldom — Support for building partial DOM trees" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="xml.sax.handler.html" class="btn btn-neutral float-right" title="xml.sax.handler — Base classes for SAX handlers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

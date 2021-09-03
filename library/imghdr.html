@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>imghdr — Determine the type of an image &mdash; Python 3.11.0a0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Python 3.11.0a0 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="copyright" title="Copyright" href="../copyright.html" />
+    <link rel="next" title="sndhdr — Determine type of sound file" href="sndhdr.html" />
+    <link rel="prev" title="colorsys — Conversions between color systems" href="colorsys.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/imghdr.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+ 
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Python
+          </a>
+              <div class="version">
+                3.11
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew/index.html">What’s New in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using/index.html">Python Setup and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The Python Language Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Python Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Built-in Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Built-in Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdtypes.html">Built-in Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Built-in Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text Processing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary.html">Binary Data Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric.html">Numeric and Mathematical Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functional.html">Functional Programming Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesys.html">File and Directory Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="persistence.html">Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archiving.html">Data Compression and Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fileformats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html">Cryptographic Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allos.html">Generic Operating System Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concurrency.html">Concurrent Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">Networking and Interprocess Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netdata.html">Internet Data Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markup.html">Structured Markup Processing Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internet.html">Internet Protocols and Support</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="mm.html">Multimedia Services</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="audioop.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audioop</span></code> — Manipulate raw audio data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aifc.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code> — Read and write AIFF and AIFC files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sunau.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sunau</span></code> — Read and write Sun AU files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wave.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wave</span></code> — Read and write WAV files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chunk.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">chunk</span></code> — Read IFF chunked data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="colorsys.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">colorsys</span></code> — Conversions between color systems</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imghdr</span></code> — Determine the type of an image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sndhdr.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sndhdr</span></code> — Determine type of sound file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ossaudiodev.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ossaudiodev</span></code> — Access to OSS-compatible audio devices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Program Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tk.html">Graphical User Interfaces with Tk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging and Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">Software Packaging and Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python Runtime Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custominterp.html">Custom Python Interpreters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Importing Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">Python Language Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">MS Windows Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unix.html">Unix Specific Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="superseded.html">Superseded Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="undoc.html">Undocumented Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_warnings.html">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extending/index.html">Extending and Embedding the Python Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api/index.html">Python/C API Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributing/index.html">Distributing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index.html">Python HOWTOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">Python Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About these documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugs.html">Dealing with Bugs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">History and License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../distutils/index.html">Distributing Python Modules (Legacy version)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Python Modules (Legacy version)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">The Python Standard Library</a> &raquo;</li>
+          <li><a href="mm.html">Multimedia Services</a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">imghdr</span></code> — Determine the type of an image</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/imghdr.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-imghdr">
+<span id="imghdr-determine-the-type-of-an-image"></span><h1><a class="reference internal" href="#module-imghdr" title="imghdr: Determine the type of image contained in a file or byte stream."><code class="xref py py-mod docutils literal notranslate"><span class="pre">imghdr</span></code></a> — Determine the type of an image<a class="headerlink" href="#module-imghdr" title="Permalink to this headline"></a></h1>
+<p><strong>Source code:</strong> <a href="#id1"><span class="problematic" id="id2">:source:`Lib/imghdr.py`</span></a></p>
+<hr class="docutils" />
+<p>The <a class="reference internal" href="#module-imghdr" title="imghdr: Determine the type of image contained in a file or byte stream."><code class="xref py py-mod docutils literal notranslate"><span class="pre">imghdr</span></code></a> module determines the type of image contained in a file or
+byte stream.</p>
+<p>The <a class="reference internal" href="#module-imghdr" title="imghdr: Determine the type of image contained in a file or byte stream."><code class="xref py py-mod docutils literal notranslate"><span class="pre">imghdr</span></code></a> module defines the following function:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="imghdr.what">
+<span class="sig-prename descclassname"><span class="pre">imghdr.</span></span><span class="sig-name descname"><span class="pre">what</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imghdr.what" title="Permalink to this definition"></a></dt>
+<dd><p>Tests the image data contained in the file named by <em>file</em>, and returns a
+string describing the image type.  If optional <em>h</em> is provided, the <em>file</em>
+argument is ignored and <em>h</em> is assumed to contain the byte stream to test.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.6: </span>Accepts a <a class="reference internal" href="../glossary.html#term-path-like-object"><span class="xref std std-term">path-like object</span></a>.</p>
+</div>
+</dd></dl>
+
+<p>The following image types are recognized, as listed below with the return value
+from <a class="reference internal" href="#imghdr.what" title="imghdr.what"><code class="xref py py-func docutils literal notranslate"><span class="pre">what()</span></code></a>:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Image format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'rgb'</span></code></p></td>
+<td><p>SGI ImgLib Files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'gif'</span></code></p></td>
+<td><p>GIF 87a and 89a Files</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'pbm'</span></code></p></td>
+<td><p>Portable Bitmap Files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'pgm'</span></code></p></td>
+<td><p>Portable Graymap Files</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'ppm'</span></code></p></td>
+<td><p>Portable Pixmap Files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'tiff'</span></code></p></td>
+<td><p>TIFF Files</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'rast'</span></code></p></td>
+<td><p>Sun Raster Files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'xbm'</span></code></p></td>
+<td><p>X Bitmap Files</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'jpeg'</span></code></p></td>
+<td><p>JPEG data in JFIF or Exif formats</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'bmp'</span></code></p></td>
+<td><p>BMP files</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'png'</span></code></p></td>
+<td><p>Portable Network Graphics</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'webp'</span></code></p></td>
+<td><p>WebP files</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'exr'</span></code></p></td>
+<td><p>OpenEXR Files</p></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.5: </span>The <em>exr</em> and <em>webp</em> formats were added.</p>
+</div>
+<p>You can extend the list of file types <a class="reference internal" href="#module-imghdr" title="imghdr: Determine the type of image contained in a file or byte stream."><code class="xref py py-mod docutils literal notranslate"><span class="pre">imghdr</span></code></a> can recognize by appending
+to this variable:</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="imghdr.tests">
+<span class="sig-prename descclassname"><span class="pre">imghdr.</span></span><span class="sig-name descname"><span class="pre">tests</span></span><a class="headerlink" href="#imghdr.tests" title="Permalink to this definition"></a></dt>
+<dd><p>A list of functions performing the individual tests.  Each function takes two
+arguments: the byte-stream and an open file-like object. When <a class="reference internal" href="#imghdr.what" title="imghdr.what"><code class="xref py py-func docutils literal notranslate"><span class="pre">what()</span></code></a> is
+called with a byte-stream, the file-like object will be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>The test function should return a string describing the image type if the test
+succeeded, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if it failed.</p>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">imghdr</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imghdr</span><span class="o">.</span><span class="n">what</span><span class="p">(</span><span class="s1">&#39;bass.gif&#39;</span><span class="p">)</span>
+<span class="go">&#39;gif&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="colorsys.html" class="btn btn-neutral float-left" title="colorsys — Conversions between color systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sndhdr.html" class="btn btn-neutral float-right" title="sndhdr — Determine type of sound file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; <a href="../copyright.html">Copyright</a> 2001-2021, Python Software Foundation.
+      <span class="lastupdated">Last updated on Sep 03, 2021.
+      </span></p>
+  </div>
+
+    
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
